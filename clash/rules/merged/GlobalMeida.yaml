@@ -7,7 +7,6 @@ payload:
   - DOMAIN-KEYWORD,tiktok
   - DOMAIN-KEYWORD,twitter
   - DOMAIN-SUFFIX,ads-twitter.com
-  - DOMAIN-SUFFIX,bilibili.tv
   - DOMAIN-SUFFIX,bytedapm.com
   - DOMAIN-SUFFIX,bytegecko-i18n.com
   - DOMAIN-SUFFIX,byteintlapi.com
@@ -72,5 +71,4 @@ payload:
   - IP-CIDR,202.160.128.0/22,no-resolve
   - IP-CIDR,209.237.192.0/19,no-resolve
   - IP-CIDR,69.195.160.0/19,no-resolve
-  - PROCESS-NAME,com.bstar.intl
   - PROCESS-NAME,com.zhiliaoapp.musically

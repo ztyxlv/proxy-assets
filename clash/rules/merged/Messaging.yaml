@@ -1,6 +1,8 @@
 payload:
   - PROCESS-NAME, LINE.exe
   - PROCESS-NAME, WhatsApp.exe
+  - PROCESS-NAME, Telegram.exe
+  - PROCESS-NAME, Discord.exe
   - DOMAIN,api.imem.app
   - DOMAIN,api.swiftgram.app
   - DOMAIN,graph.facebook.com
