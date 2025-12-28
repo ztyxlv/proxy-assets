@@ -1,6 +1,4 @@
 payload:
-  - PROCESS-NAME, ChatGPT.exe
-  - PROCESS-NAME, claude.exe
   - DOMAIN-SUFFIX, pplx.ai
   - DOMAIN-SUFFIX, perplexity.ai
   - DOMAIN,ai.google.dev
