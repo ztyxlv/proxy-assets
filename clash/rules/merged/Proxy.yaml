@@ -1,6 +1,4 @@
 payload:
-  - DOMAIN-SUFFIX, bygcloud.com
-  - DOMAIN-SUFFIX, console.stardream.cloud
   - DOMAIN-KEYWORD,github
   - DOMAIN-SUFFIX,atom.io
   - DOMAIN-SUFFIX,dependabot.com

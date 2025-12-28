@@ -1,7 +1,4 @@
 payload:
-  - PROCESS-NAME, steam.exe
-  - PROCESS-NAME, steamservice.exe
-  - PROCESS-NAME, steamwebhelper.exe
   - DOMAIN,assets1.xboxlive.cn
   - DOMAIN,assets1.xboxlive.com
   - DOMAIN,assets2.xboxlive.cn

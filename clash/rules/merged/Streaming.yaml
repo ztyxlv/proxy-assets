@@ -38,12 +38,16 @@ payload:
   - DOMAIN-SUFFIX,babyzone.com
   - DOMAIN-SUFFIX,bam.nr-data.net
   - DOMAIN-SUFFIX,bamgrid.com
+  - DOMAIN-SUFFIX,bcbolthboa-a.akamaihd.net
   - DOMAIN-SUFFIX,beautyandthebeastmusical.co.uk
   - DOMAIN-SUFFIX,braze.com
   - DOMAIN-SUFFIX,cdn.optimizely.com
+  - DOMAIN-SUFFIX,cf-images.ap-southeast-1.prod.boltdns.net
+  - DOMAIN-SUFFIX,cinemax.com
   - DOMAIN-SUFFIX,conviva.com
   - DOMAIN-SUFFIX,cookielaw.org
   - DOMAIN-SUFFIX,d9.flashtalking.com
+  - DOMAIN-SUFFIX,dai3fd1oh325y.cloudfront.net
   - DOMAIN-SUFFIX,dilcdn.com
   - DOMAIN-SUFFIX,disney-asia.com
   - DOMAIN-SUFFIX,disney-discount.com
@@ -154,12 +158,42 @@ payload:
   - DOMAIN-SUFFIX,espncdn.com
   - DOMAIN-SUFFIX,espndotcom.tt.omtrdc.net
   - DOMAIN-SUFFIX,espnqa.com
+  - DOMAIN-SUFFIX,execute-api.ap-southeast-1.amazonaws.com
   - DOMAIN-SUFFIX,execute-api.us-east-1.amazonaws.com
   - DOMAIN-SUFFIX,fast.com
   - DOMAIN-SUFFIX,fls-na.amazon.com
   - DOMAIN-SUFFIX,flxvpn.net
+  - DOMAIN-SUFFIX,forthethrone.com
   - DOMAIN-SUFFIX,go-disneyworldgo.com
   - DOMAIN-SUFFIX,go.com
+  - DOMAIN-SUFFIX,hbo.com
+  - DOMAIN-SUFFIX,hbo.com.c.footprint.net
+  - DOMAIN-SUFFIX,hbo.com.edgesuite.net
+  - DOMAIN-SUFFIX,hbo.map.fastly.net
+  - DOMAIN-SUFFIX,hboasia.com
+  - DOMAIN-SUFFIX,hboasia1-i.akamaihd.net
+  - DOMAIN-SUFFIX,hboasia2-i.akamaihd.net
+  - DOMAIN-SUFFIX,hboasia3-i.akamaihd.net
+  - DOMAIN-SUFFIX,hboasia4-i.akamaihd.net
+  - DOMAIN-SUFFIX,hboasia5-i.akamaihd.net
+  - DOMAIN-SUFFIX,hboasialive.akamaized.net
+  - DOMAIN-SUFFIX,hbogeo.cust.footprint.net
+  - DOMAIN-SUFFIX,hbogo.co.th
+  - DOMAIN-SUFFIX,hbogo.com
+  - DOMAIN-SUFFIX,hbogo.eu
+  - DOMAIN-SUFFIX,hbogoasia.com
+  - DOMAIN-SUFFIX,hbogoasia.hk
+  - DOMAIN-SUFFIX,hbogoasia.id
+  - DOMAIN-SUFFIX,hbogoasia.ph
+  - DOMAIN-SUFFIX,hbogoasia.sg
+  - DOMAIN-SUFFIX,hbogoasia.tw
+  - DOMAIN-SUFFIX,hbogoprod-vod.akamaized.net
+  - DOMAIN-SUFFIX,hbolb.onwardsmg.com
+  - DOMAIN-SUFFIX,hbomax.com
+  - DOMAIN-SUFFIX,hbomaxcdn.com
+  - DOMAIN-SUFFIX,hbomaxdash.s.llnwi.net
+  - DOMAIN-SUFFIX,hbonow.com
+  - DOMAIN-SUFFIX,hbounify-prod.evergent.com
   - DOMAIN-SUFFIX,hotstar-cdn.net
   - DOMAIN-SUFFIX,hotstar-labs.com
   - DOMAIN-SUFFIX,hotstar.com
@@ -167,6 +201,7 @@ payload:
   - DOMAIN-SUFFIX,hsprepack.akamaized.net
   - DOMAIN-SUFFIX,js-agent.newrelic.com
   - DOMAIN-SUFFIX,llnwd.net
+  - DOMAIN-SUFFIX,manifest.prod.boltdns.net
   - DOMAIN-SUFFIX,marvel.com
   - DOMAIN-SUFFIX,marvel10thanniversary.com
   - DOMAIN-SUFFIX,marveldimensionofheroes.com
@@ -176,6 +211,8 @@ payload:
   - DOMAIN-SUFFIX,marvelspotlightplays.com
   - DOMAIN-SUFFIX,marvelsuperheroseptember.com
   - DOMAIN-SUFFIX,marvelsuperwar.com
+  - DOMAIN-SUFFIX,max.com
+  - DOMAIN-SUFFIX,maxgo.com
   - DOMAIN-SUFFIX,media-amazon.com
   - DOMAIN-SUFFIX,mickey.tv
   - DOMAIN-SUFFIX,moviesanywhere.com
@@ -209,7 +246,14 @@ payload:
   - DOMAIN-SUFFIX,nflxvideo.net
   - DOMAIN-SUFFIX,ngeo.com
   - DOMAIN-SUFFIX,nomadlandmovie.ch
+  - DOMAIN-SUFFIX,now-ashare.com
+  - DOMAIN-SUFFIX,now-tv.com
+  - DOMAIN-SUFFIX,now.com
+  - DOMAIN-SUFFIX,now.com.hk
+  - DOMAIN-SUFFIX,nowe.com
+  - DOMAIN-SUFFIX,nowe.hk
   - DOMAIN-SUFFIX,onetrust.com
+  - DOMAIN-SUFFIX,players.brightcove.net
   - DOMAIN-SUFFIX,playmation.com
   - DOMAIN-SUFFIX,prime-video.com
   - DOMAIN-SUFFIX,primevideo.cc
@@ -235,8 +279,10 @@ payload:
   - DOMAIN-SUFFIX,thewaltdisneycompany.com
   - DOMAIN-SUFFIX,thisispolaris.com
   - DOMAIN-SUFFIX,us-west-2.amazonaws.com
+  - DOMAIN-SUFFIX,warnermediacdn.com
   - DOMAIN-SUFFIX,watchdisneyfe.com
   - DOMAIN-SUFFIX,watchespn.com
+  - DOMAIN-SUFFIX,youboranqs01.com
   - IP-CIDR,103.87.204.0/22,no-resolve
   - IP-CIDR,107.23.255.0/26,no-resolve
   - IP-CIDR,108.128.160.0/23,no-resolve
@@ -1359,4 +1405,5 @@ payload:
   - PROCESS-NAME,com.amazon.avod.thirdpartyclient
   - PROCESS-NAME,com.disney.datg.videoplatforms.android.abc
   - PROCESS-NAME,com.disney.disneyplus
+  - PROCESS-NAME,com.hbo.hbonow
   - PROCESS-NAME,com.netflix.mediaclient
