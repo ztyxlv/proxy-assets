@@ -21,6 +21,7 @@ rules:
   - name: Exchange
     local:
       - DOMAIN-SUFFIX, htx.com
+      - DOMAIN-SUFFIX, binance.info
     remote:
       - "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/OKX/OKX.list"
       - "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Binance/Binance.list"
