@@ -1,1 +1,1 @@
-# profiles-proxies
+# profiles-proxy
