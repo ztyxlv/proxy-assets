@@ -21,22 +21,29 @@ jobs:
           mkdir -p clash/rules/{source,merged}
 
       - run: |
-          yq -r '.rules[] | .name + " " + (.remote[]? // "")' clash/rules/manifest.yml \
-          | xargs -n 2 -P 10 sh -c 'mkdir -p clash/rules/source/$1; curl -L "$2" -o clash/rules/source/$1/${2##*/}' sh
+          yq -r '.rules[].name' clash/rules/manifest.yml \
+          | xargs -I{} sh -c 'mkdir -p "clash/rules/source/{}"'
+
+      - run: |
+          yq -r '.rules[] | select(.remote and (.remote | length > 0)) | .name + " " + (.remote[]? // "")' clash/rules/manifest.yml \
+          | xargs -n 2 -P 10 sh -c 'curl -L "$2" -o "clash/rules/source/$1/${2##*/}"' sh
 
       - run: |
           for d in clash/rules/source/*; do
-            echo "payload:" > "clash/rules/merged/${d##*/}.yaml"
+            outfile="clash/rules/merged/${d##*/}.yaml"
+
+            echo "payload:" > "$outfile"
 
             yq -r ".rules[] | select(.name == \"${d##*/}\") | .local[]?" clash/rules/manifest.yml \
               | sed 's/^/  - /' \
-              >> "clash/rules/merged/${d##*/}.yaml"
+              >> "$outfile"
 
-            yq eval-all '.payload[]' "$d"/*.yaml \
-              | grep -v '^---$' \
-              | sort -u \
-              | sed 's/^/  - /' \
-              >> "clash/rules/merged/${d##*/}.yaml"
+            if ls "$d"/*.yaml 1> /dev/null 2>&1; then
+              yq eval-all '.payload[]' "$d"/*.yaml \
+                | grep -v '^---$' \
+                | sed 's/^/  - /' \
+                >> "$outfile"
+            fi
           done
 
       - run: |
@@ -44,20 +51,26 @@ jobs:
           mkdir -p surge/rules/{source,merged}
 
       - run: |
-          yq -r '.rules[] | .name + " " + (.remote[]? // "")' surge/rules/manifest.yml \
-          | xargs -n 2 -P 10 sh -c 'mkdir -p surge/rules/source/$1; curl -L "$2" -o surge/rules/source/$1/${2##*/}' sh
+          yq -r '.rules[].name' surge/rules/manifest.yml \
+          | xargs -I{} sh -c 'mkdir -p "surge/rules/source/{}"'
+
+      - run: |
+          yq -r '.rules[] | select(.remote and (.remote | length > 0)) | .name + " " + (.remote[]? // "")' surge/rules/manifest.yml \
+          | xargs -n 2 -P 10 sh -c 'curl -L "$2" -o "surge/rules/source/$1/${2##*/}"' sh
 
       - run: |
           for d in surge/rules/source/*; do
             outfile="surge/rules/merged/${d##*/}.list"
+
             > "$outfile"
 
             yq -r ".rules[] | select(.name == \"${d##*/}\") | .local[]?" surge/rules/manifest.yml \
               >> "$outfile"
 
-            grep -hv '^#' "$d"/*.list \
-              | sort -u \
-              >> "$outfile"
+            if ls "$d"/*.list 1> /dev/null 2>&1; then
+              grep -hv '^#' "$d"/*.list \
+                >> "$outfile"
+            fi
           done
 
       - run: |
