@@ -99,6 +99,6 @@ rules:
     remote:
       - "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GitHub/GitHub.list"
 
-  - name: directX
+  - name: directx
     remote:
       - "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/ChinaMax/ChinaMax.list"
