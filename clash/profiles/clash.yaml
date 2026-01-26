@@ -1,0 +1,353 @@
+allow-lan: true
+bind-address: "*"
+lan-allowed-ips: ["127.0.0.1/8", ""]
+lan-disallowed-ips: []
+
+authentication: [""]
+skip-auth-prefixes: ["127.0.0.1/8", ""]
+
+mode: rule
+
+log-level: warning
+
+ipv6: false
+
+keep-alive-interval: 30
+keep-alive-idle: 180
+disable-keep-alive: false
+
+find-process-mode: strict
+
+# external-controller: 127.0.0.1:9090
+# external-controller-cors:
+#   allow-origins: []
+#   allow-private-network: true
+# secret: ""
+
+# external-ui: ./ui
+
+# external-ui-name: xd
+
+# external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+unified-delay: true
+
+tcp-concurrent: true
+
+# interface-name: eth0
+
+# routing-mark: 6666
+
+geodata-mode: false
+
+geodata-loader: memconservative
+
+geo-auto-update: true
+geo-update-interval: 168
+
+geox-url:
+  geoip: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat"
+  geosite: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat"
+  mmdb: "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb"
+  asn: "https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb"
+
+global-ua: ""
+
+etag-support: true
+
+dns:
+  enable: true
+  cache-algorithm: arc
+  prefer-h3: false
+  listen: 127.0.0.1:1053
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter-mode: blacklist
+  fake-ip-filter: ["*.local", "*.home.arpa", "ntp.*.com", "time.*.com", "+.stun.*.*", "+.stun.*.*.*.*", "*.msftncsi.com", "*.msftconnecttest.com"]
+  use-hosts: true
+  use-system-hosts: true
+  respect-rules: false
+  default-nameserver: ["223.5.5.5", "223.6.6.6"]
+  proxy-server-nameserver: ["223.5.5.5", "223.6.6.6"]
+  direct-nameserver: ["223.5.5.5", "223.6.6.6"]
+  direct-nameserver-follow-policy: false
+  nameserver: ["https://doh.pub/dns-query", "https://dns.alidns.com/dns-query"]
+  fallback: ["https://dns.google/dns-query", "https://dns.cloudflare.com/dns-query"]
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr: []
+    domain: []
+
+# port: 7890
+# socks-port: 7891
+mixed-port: 7892
+# redir-port: 7893
+# tproxy-port: 7894
+
+tun:
+  enable: false
+  stack: mixed
+  device: meta
+  auto-route: true
+  # auto-redirect: true
+  auto-detect-interface: true
+  dns-hijack: ["udp://any:53"]
+  strict-route: true
+  mtu: 1480
+  # gso: true
+  # gso-max-size: 65536
+  udp-timeout: 300
+  iproute2-table-index: 2022
+  iproute2-rule-index: 9000
+  endpoint-independent-nat: false
+
+proxies:
+
+proxies-custom-hk: &proxies-custom-hk ["DIRECT", "REJECT"]
+proxies-custom-us: &proxies-custom-us ["DIRECT", "REJECT"]
+proxies-custom-dr: &proxies-custom-dr ["DIRECT", "REJECT"]
+proxies-custom-rj: &proxies-custom-rj ["REJECT", "DIRECT"]
+
+proxy-group-custom: &proxy-group-custom
+  type: select
+
+proxy-group-region: &proxy-group-region
+  type: select
+  include-all-proxies: true
+
+proxy-groups:
+  - name: "Gaming"
+    <<: *proxy-group-custom
+    proxies: *proxies-custom-hk
+    icon: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/steam.png"
+
+  - name: "Streaming"
+    <<: *proxy-group-custom
+    proxies: *proxies-custom-hk
+    icon: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/netflix.png"
+
+  - name: "Messaging"
+    <<: *proxy-group-custom
+    proxies: *proxies-custom-hk
+    icon: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/telegram.png"
+
+  - name: "Finance"
+    <<: *proxy-group-custom
+    proxies: *proxies-custom-us
+    icon: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/paypal.png"
+
+  - name: "Commerce"
+    <<: *proxy-group-custom
+    proxies: *proxies-custom-us
+    icon: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/amazon.png"
+
+  - name: "Intelligence"
+    <<: *proxy-group-custom
+    proxies: *proxies-custom-us
+    icon: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/chatgpt.png"
+
+  - name: "GlobalMedia"
+    <<: *proxy-group-custom
+    proxies: *proxies-custom-hk
+    icon: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/x.png"
+
+  - name: "ChinaMedia"
+    <<: *proxy-group-custom
+    proxies: *proxies-custom-dr
+    icon: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/bilibili.png"
+
+  - name: "Microsoft"
+    <<: *proxy-group-custom
+    proxies: *proxies-custom-hk
+    icon: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/microsoft.png"
+
+  - name: "Google"
+    <<: *proxy-group-custom
+    proxies: *proxies-custom-hk
+    icon: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/google.png"
+
+  - name: "Apple"
+    <<: *proxy-group-custom
+    proxies: *proxies-custom-dr
+    icon: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/apple.png"
+
+  - name: "ProxyX"
+    <<: *proxy-group-custom
+    proxies: *proxies-custom-hk
+    icon: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/policies/proxy.png"
+
+  - name: "DirectX"
+    <<: *proxy-group-custom
+    proxies: *proxies-custom-dr
+    icon: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/policies/direct.png"
+
+  - name: "RejectX"
+    <<: *proxy-group-custom
+    proxies: *proxies-custom-rj
+    icon: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/policies/reject.png"
+
+  - name: "HK Nodes"
+    <<: *proxy-group-region
+    filter: "HK"
+    icon: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/flags/hk.svg"
+
+  - name: "TW Nodes"
+    <<: *proxy-group-region
+    filter: "TW"
+    icon: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/flags/tw.svg"
+
+  - name: "JP Nodes"
+    <<: *proxy-group-region
+    filter: "JP"
+    icon: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/flags/jp.svg"
+
+  - name: "SG Nodes"
+    <<: *proxy-group-region
+    filter: "SG"
+    icon: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/flags/sg.svg"
+
+  - name: "US Nodes"
+    <<: *proxy-group-region
+    filter: "US"
+    icon: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/flags/us.svg"
+
+rule-provider-config: &rule-provider-config
+  type: http
+  interval: 86400
+  behavior: classical
+
+rule-providers:
+  whitelist:
+    <<: *rule-provider-config
+    url: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/clash/rules/merged/whitelist.yaml"
+    path: ./rule-providers/whitelist.yaml
+
+  reject:
+    <<: *rule-provider-config
+    url: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/clash/rules/merged/reject.yaml"
+    path: ./rule-providers/reject.yaml
+
+  direct:
+    <<: *rule-provider-config
+    url: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/clash/rules/merged/direct.yaml"
+    path: ./rule-providers/direct.yaml
+
+  gaming:
+    <<: *rule-provider-config
+    url: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/clash/rules/merged/gaming.yaml"
+    path: ./rule-providers/gaming.yaml
+
+  streaming:
+    <<: *rule-provider-config
+    url: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/clash/rules/merged/streaming.yaml"
+    path: ./rule-providers/streaming.yaml
+
+  messaging:
+    <<: *rule-provider-config
+    url: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/clash/rules/merged/messaging.yaml"
+    path: ./rule-providers/messaging.yaml
+
+  cryptoexchange:
+    <<: *rule-provider-config
+    url: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/clash/rules/merged/cryptoexchange.yaml"
+    path: ./rule-providers/cryptoexchange.yaml
+
+  finance:
+    <<: *rule-provider-config
+    url: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/clash/rules/merged/finance.yaml"
+    path: ./rule-providers/finance.yaml
+
+  commerce:
+    <<: *rule-provider-config
+    url: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/clash/rules/merged/commerce.yaml"
+    path: ./rule-providers/commerce.yaml
+
+  intelligence:
+    <<: *rule-provider-config
+    url: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/clash/rules/merged/intelligence.yaml"
+    path: ./rule-providers/intelligence.yaml
+
+  youtube:
+    <<: *rule-provider-config
+    url: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/clash/rules/merged/youtube.yaml"
+    path: ./rule-providers/youtube.yaml
+
+  spotify:
+    <<: *rule-provider-config
+    url: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/clash/rules/merged/spotify.yaml"
+    path: ./rule-providers/spotify.yaml
+
+  globalmedia:
+    <<: *rule-provider-config
+    url: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/clash/rules/merged/globalmedia.yaml"
+    path: ./rule-providers/globalmedia.yaml
+
+  chinamedia:
+    <<: *rule-provider-config
+    url: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/clash/rules/merged/chinamedia.yaml"
+    path: ./rule-providers/chinamedia.yaml
+
+  microsoft:
+    <<: *rule-provider-config
+    url: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/clash/rules/merged/microsoft.yaml"
+    path: ./rule-providers/microsoft.yaml
+
+  googlevoice:
+    <<: *rule-provider-config
+    url: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/clash/rules/merged/googlevoice.yaml"
+    path: ./rule-providers/googlevoice.yaml
+
+  google:
+    <<: *rule-provider-config
+    url: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/clash/rules/merged/google.yaml"
+    path: ./rule-providers/google.yaml
+
+  apple:
+    <<: *rule-provider-config
+    url: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/clash/rules/merged/apple.yaml"
+    path: ./rule-providers/apple.yaml
+
+  nike:
+    <<: *rule-provider-config
+    url: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/clash/rules/merged/nike.yaml"
+    path: ./rule-providers/nike.yaml
+
+  proxy:
+    <<: *rule-provider-config
+    url: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/clash/rules/merged/proxy.yaml"
+    path: ./rule-providers/proxy.yaml
+
+  directx:
+    <<: *rule-provider-config
+    url: "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/clash/rules/merged/directx.yaml"
+    path: ./rule-providers/directx.yaml
+
+rules:
+  - RULE-SET, whitelist, DirectX
+  - RULE-SET, reject, RejectX
+  - RULE-SET, direct, DirectX
+  - RULE-SET, gaming, Gaming
+  - RULE-SET, streaming, Streaming
+  - RULE-SET, messaging, Messaging
+  - RULE-SET, cryptoexchange, JP Nodes
+  - RULE-SET, finance, Finance
+  - RULE-SET, commerce, Commerce
+  - RULE-SET, intelligence, Intelligence
+  - RULE-SET, youtube, HK Nodes
+  - RULE-SET, spotify, US Nodes
+  - RULE-SET, globalmedia, GlobalMedia
+  - RULE-SET, chinamedia, ChinaMedia
+  - RULE-SET, microsoft, Microsoft
+  - RULE-SET, googlevoice, US Nodes
+  - RULE-SET, google, Google
+  - RULE-SET, apple, Apple
+  - RULE-SET, nike, US Nodes
+  - RULE-SET, proxy, ProxyX
+  - RULE-SET, directx, DirectX
+  - MATCH, ProxyX
