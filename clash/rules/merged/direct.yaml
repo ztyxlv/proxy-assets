@@ -1,6 +1,4 @@
 payload:
-  - PROCESS-NAME,localsend_app.exe
-  - PROCESS-NAME,qbittorrent.exe
   - DOMAIN,asusrouter.com
   - DOMAIN,instant.arubanetworks.com
   - DOMAIN,oasisauth.h3c.com
