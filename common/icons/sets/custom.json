@@ -1,0 +1,69 @@
+{
+  "name": "Custom",
+  "icons": [
+    {
+      "name": "Amazon",
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/amazon.svg"
+    },
+    {
+      "name": "Apple",
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/apple.svg"
+    },
+    {
+      "name": "Bilibili",
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/bilibili.svg"
+    },
+    {
+      "name": "Binance",
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/binance.svg"
+    },
+    {
+      "name": "ChatGPT",
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/chatgpt.svg"
+    },
+    {
+      "name": "Google",
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/google.svg"
+    },
+    {
+      "name": "Microsoft",
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/microsoft.svg"
+    },
+    {
+      "name": "Netflix",
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/netflix.svg"
+    },
+    {
+      "name": "PayPal",
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/paypal.svg"
+    },
+    {
+      "name": "Steam",
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/steam.svg"
+    },
+    {
+      "name": "Telegram",
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/telegram.svg"
+    },
+    {
+      "name": "X",
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/x.svg"
+    },
+    {
+      "name": "Fish",
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/policies/fish.svg"
+    },
+    {
+      "name": "Hong Kong",
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/flags/hk.svg"
+    },
+    {
+      "name": "Japan",
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/flags/jp.svg"
+    },
+    {
+      "name": "United States",
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/flags/us.svg"
+    }
+  ]
+}
