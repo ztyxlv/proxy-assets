@@ -3,67 +3,67 @@
   "icons": [
     {
       "name": "Amazon",
-      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/amazon.svg"
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/amazon.png"
     },
     {
       "name": "Apple",
-      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/apple.svg"
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/apple.png"
     },
     {
       "name": "Bilibili",
-      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/bilibili.svg"
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/bilibili.png"
     },
     {
       "name": "Binance",
-      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/binance.svg"
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/binance.png"
     },
     {
       "name": "ChatGPT",
-      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/chatgpt.svg"
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/chatgpt.png"
     },
     {
       "name": "Google",
-      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/google.svg"
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/google.png"
     },
     {
       "name": "Microsoft",
-      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/microsoft.svg"
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/microsoft.png"
     },
     {
       "name": "Netflix",
-      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/netflix.svg"
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/netflix.png"
     },
     {
       "name": "PayPal",
-      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/paypal.svg"
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/paypal.png"
     },
     {
       "name": "Steam",
-      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/steam.svg"
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/steam.png"
     },
     {
       "name": "Telegram",
-      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/telegram.svg"
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/telegram.png"
     },
     {
       "name": "X",
-      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/x.svg"
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/x.png"
     },
     {
       "name": "Fish",
-      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/policies/fish.svg"
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/policies/fish.png"
     },
     {
       "name": "Hong Kong",
-      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/flags/hk.svg"
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/flags/hk.png"
     },
     {
       "name": "Japan",
-      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/flags/jp.svg"
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/flags/jp.png"
     },
     {
       "name": "United States",
-      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/flags/us.svg"
+      "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/flags/us.png"
     }
   ]
 }
