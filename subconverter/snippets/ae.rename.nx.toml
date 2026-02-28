@@ -1,0 +1,127 @@
+[[rename_node]]
+match = "^(瑞士|Switzerland)"
+replace = "🇨🇭 CH-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(德国|Germany)"
+replace = "🇩🇪 DE-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(瑞典|Sweden)"
+replace = "🇸🇪 SE-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^Australia Sydney"
+replace = "🇦🇺 AU-SYD NX-IEPL"
+
+[[rename_node]]
+match = "^(澳大利亚|Australia)"
+replace = "🇦🇺 AU-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(中国香港特别行政区|Hong Kong, China \\(SAR\\)|Hong Kong)"
+replace = "🇭🇰 HK-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(荷兰|Netherlands)"
+replace = "🇳🇱 NL-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(爱尔兰|Ireland)"
+replace = "🇮🇪 IE-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(新加坡|Singapore)"
+replace = "🇸🇬 SG-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(英国|United Kingdom)"
+replace = "🇬🇧 GB-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(阿拉伯联合酋长国|United Arab Emirates)"
+replace = "🇦🇪 AE-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(加拿大|Canada)"
+replace = "🇨🇦 CA-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^USA Los Angeles"
+replace = "🇺🇸 US-LAX NX-IEPL"
+
+[[rename_node]]
+match = "^USA San Jose"
+replace = "🇺🇸 US-SJC NX-IEPL"
+
+[[rename_node]]
+match = "^USA Seattle"
+replace = "🇺🇸 US-SEA NX-IEPL"
+
+[[rename_node]]
+match = "^(美国|United States)"
+replace = "🇺🇸 US-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(韩国|Korea \\(Republic of\\)|Korea)"
+replace = "🇰🇷 KR-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(奥地利|Austria)"
+replace = "🇦🇹 AT-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(日本|Japan)"
+replace = "🇯🇵 JP-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(法国|France)"
+replace = "🇫🇷 FR-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(智利|Chile)"
+replace = "🇨🇱 CL-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(匈牙利|Hungary)"
+replace = "🇭🇺 HU-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(阿根廷|Argentina)"
+replace = "🇦🇷 AR-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(土耳其|Türkiye|Turkey)"
+replace = "🇹🇷 TR-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(保加利亚|Bulgaria)"
+replace = "🇧🇬 BG-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^Russia Moscow"
+replace = "🇷🇺 RU-MOW NX-IEPL"
+
+[[rename_node]]
+match = "^Russia St\\. Petersburg"
+replace = "🇷🇺 RU-LED NX-IEPL 01"
+
+[[rename_node]]
+match = "^(俄罗斯联邦|Russian Federation)"
+replace = "🇷🇺 RU-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(巴西|Brazil)"
+replace = "🇧🇷 BR-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(印度尼西亚|Indonesia)"
+replace = "🇮🇩 ID-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(印度|India)"
+replace = "🇮🇳 IN-XXX NX-IEPL"
+
+[[rename_node]]
+match = "^(台湾|Taiwan)"
+replace = "🇹🇼 TW-XXX NX-IEPL"

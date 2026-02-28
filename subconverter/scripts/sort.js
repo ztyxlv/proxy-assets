@@ -1,5 +1,5 @@
 function compare(a, b) {
-  const countryOrder = [
+  var countryOrder = [
     "IS", "NO", "CH", "DK", "DE", "SE", "AU", "HK", "NL", "BE", "IE", "FI", "SG", "GB",
     "AE", "CA", "LI", "NZ", "US", "KR", "SI", "AT", "JP", "MT", "LU", "FR", "IL", "ES",
     "CZ", "IT", "SM", "AD", "CY", "GR", "PL", "EE", "SA", "BH", "LT", "PT", "HR", "LV",
@@ -16,74 +16,102 @@ function compare(a, b) {
     "MG", "YE", "SL", "BF", "BI", "ML", "NE", "TD", "CF", "SO", "SS", "KP", "MC", "TW"
   ];
 
-  const pinnedCountries = ["HK", "TW", "JP", "SG", "US"];
+  var countryPriority = ["HK", "TW", "JP", "SG", "US"];
 
-  const cityOrder = {
+  var cityPriority = {
     AU: ["SYD"],
     US: ["LAX", "SJC", "SEA"],
     RU: ["MOW", "LED"]
   };
 
-  const pinnedCities = {};
+  var providerPriority = ["NX", "KU"];
 
-  const toRank = (arr, offset = 0) =>
-    Object.fromEntries(arr.map((k, i) => [k, i + 1 + offset]));
+  var qualityPriority = ["IEPL", "IPLC"];
 
-  const buildCityRank = (base, pinned) => {
-    const rank = {};
-
-    for (const [cc, cities] of Object.entries(base)) {
-      const top = pinned[cc] || [];
-      const topSet = new Set(top);
-
-      const merged = [
-        ...top,
-        ...cities.filter((c) => !topSet.has(c))
-      ];
-
-      merged.forEach((city, i) => {
-        rank[`${cc} ${city}`] = i + 1;
-      });
+  function buildRank(arr, offset) {
+    var map = {};
+    for (var i = 0; i < arr.length; i++) {
+      map[arr[i]] = i + (offset || 0);
     }
+    return map;
+  }
 
-    return rank;
-  };
+  function getRank(map, key, fallback) {
+    return map[key] !== undefined ? map[key] : fallback;
+  }
 
-  const countryRank = toRank(countryOrder, 1000);
-  const pinnedRank = toRank(pinnedCountries);
-  const cityRank = buildCityRank(cityOrder, pinnedCities);
+  function getCityRank(iso, city) {
+    var arr = cityPriority[iso];
+    if (!arr) return 9999;
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] === city) return i;
+    }
+    return 9999;
+  }
 
-  const getCountryRank = (cc) =>
-    pinnedRank[cc] ?? countryRank[cc] ?? 99999;
+  function parse(remark) {
+    var parts = (remark || "").trim().split(/\s+/);
 
-  const parse = (remark) => {
-    const parts = (remark || "").trim().split(/\s+/);
-    const hasCity = parts.length === 5;
+    var isoCity = parts[1] || "";
+    var providerQuality = parts[2] || "";
+    var indexStr = parts[3] || "";
 
-    const cc = parts[1] || "";
-    const cityKey = hasCity ? `${cc} ${parts[2]}` : null;
-    const typeToken = parts[hasCity ? 4 : 3] || "";
-    const idxMatch = typeToken.match(/^[ET](\d+)$/);
+    var iso = "";
+    var city = "";
+    var provider = "";
+    var quality = "";
+
+    var regionParts = isoCity.split("-");
+    iso = regionParts[0] || "";
+    city = regionParts[1] || "";
+
+    var pqParts = providerQuality.split("-");
+    provider = pqParts[0] || "";
+    quality = pqParts[1] || "";
+
+    var index = parseInt(indexStr, 10);
+    if (isNaN(index)) index = 9999;
 
     return {
-      country: getCountryRank(cc),
-      city: cityKey ? cityRank[cityKey] ?? 9999 : 9999,
-      type: typeToken.startsWith("E")
-        ? 0
-        : typeToken.startsWith("T")
-        ? 1
-        : 2,
-      index: idxMatch ? parseInt(idxMatch[1], 10) : 9999,
+      iso: iso,
+      city: city,
+      provider: provider,
+      quality: quality,
+      index: index,
       raw: remark || ""
     };
-  };
+  }
 
-  const A = parse(a.Remark);
-  const B = parse(b.Remark);
+  var countryRank = buildRank(countryOrder, 1000);
+  var pinnedRank = buildRank(countryPriority, 0);
+  var providerRank = buildRank(providerPriority, 0);
+  var qualityRank = buildRank(qualityPriority, 0);
 
-  if (A.country !== B.country) return A.country < B.country;
-  if (A.city !== B.city) return A.city < B.city;
-  if (A.type !== B.type) return A.type < B.type;
+  var A = parse(a.Remark);
+  var B = parse(b.Remark);
+
+  var A_country = pinnedRank[A.iso] !== undefined
+    ? pinnedRank[A.iso]
+    : getRank(countryRank, A.iso, 99999);
+
+  var B_country = pinnedRank[B.iso] !== undefined
+    ? pinnedRank[B.iso]
+    : getRank(countryRank, B.iso, 99999);
+
+  if (A_country !== B_country) return A_country < B_country;
+
+  var A_city = getCityRank(A.iso, A.city);
+  var B_city = getCityRank(B.iso, B.city);
+  if (A_city !== B_city) return A_city < B_city;
+
+  var A_provider = getRank(providerRank, A.provider, 9999);
+  var B_provider = getRank(providerRank, B.provider, 9999);
+  if (A_provider !== B_provider) return A_provider < B_provider;
+
+  var A_quality = getRank(qualityRank, A.quality, 9999);
+  var B_quality = getRank(qualityRank, B.quality, 9999);
+  if (A_quality !== B_quality) return A_quality < B_quality;
+
   if (A.index !== B.index) return A.index < B.index;
 
   return A.raw < B.raw;
