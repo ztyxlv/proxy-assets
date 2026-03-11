@@ -1,0 +1,192 @@
+rules:
+  - name: direct-private-domain
+    type: domain
+    remote:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.mrs
+
+  - name: direct-private-ipcidr
+    type: ipcidr
+    remote:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/privateip.mrs
+
+  - name: direct-domain
+    type: domain
+    remote:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/trackerslist.mrs
+
+  - name: direct-classical
+    type: classical
+    inline:
+      - PROCESS-NAME,qbittorrent.exe
+      - PROCESS-NAME,localsend_app.exe
+
+  - name: reject-domain
+    type: domain
+    remote:
+      - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdvertisingLite/AdvertisingLite_Domain.yaml
+
+  - name: reject-classical
+    type: classical
+    remote:
+      - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/AdvertisingLite/AdvertisingLite.yaml
+
+  - name: youtube-domain
+    type: domain
+    remote:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/youtube.mrs
+
+  - name: tiktok-domain
+    type: domain
+    remote:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/tiktok.mrs
+
+  - name: spotify-domain
+    type: domain
+    remote:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/spotify.mrs
+
+  - name: bilibili-domain
+    type: domain
+    remote:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/bilibili.mrs
+
+  - name: speedtest-domain
+    type: domain
+    remote:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/networktest.mrs
+
+  - name: telegram-classical
+    type: classical
+    remote:
+      - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram_No_Resolve.yaml
+
+  - name: github-classical
+    type: classical
+    remote:
+      - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitHub/GitHub_No_Resolve.yaml
+
+  - name: nike-classical
+    type: classical
+    remote:
+      - "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Nike/Nike_No_Resolve.yaml"
+
+  - name: video-netflix-domain
+    type: domain
+    remote:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/netflix.mrs
+
+  - name: video-netflix-ipcidr
+    type: ipcidr
+    remote:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/netflixip.mrs
+
+  - name: video-domain
+    type: domain
+    remote:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/disney.list
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/appletv.list
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/primevideo.list
+
+  - name: game-cn-domain
+    type: domain
+    remote:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/games-cn.mrs
+
+  - name: game-domain
+    type: domain
+    remote:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/games.mrs
+
+  - name: ai-apple-domain
+    type: domain
+    remote:
+      - https://raw.githubusercontent.com/Accademia/Additional_Rule_For_Clash/main/AppleAI/AppleAI_Domain.yaml
+
+  - name: ai-domain
+    type: domain
+    remote:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ai.mrs
+
+  - name: crypto-domain
+    type: domain
+    remote:
+      - https://github.com/QuixoticHeart/rule-set/raw/refs/heads/ruleset/meta/domain/crypto.mrs
+
+  - name: finance-domain
+    type: domain
+    remote:
+      - https://github.com/QuixoticHeart/rule-set/raw/refs/heads/ruleset/meta/domain/paypal.mrs
+
+  - name: ecommerce-domain
+    type: domain
+    remote:
+      - https://github.com/QuixoticHeart/rule-set/raw/refs/heads/ruleset/meta/domain/ecommerce.mrs
+
+  - name: ecommerce-ipcidr
+    type: ipcidr
+    remote:
+      - https://github.com/QuixoticHeart/rule-set/raw/refs/heads/ruleset/meta/ipcidr/ecommerce.mrs
+
+  - name: google-voice-domain
+    type: domain
+    inline:
+      - voice.google.com
+
+  - name: google-cn-domain
+    type: domain
+    remote:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/google-cn.mrs
+
+  - name: google-domain
+    type: domain
+    remote:
+      - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/domain/googlefcm.list
+      - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/domain/google.list
+
+  - name: google-ipcidr
+    type: ipcidr
+    remote:
+      - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/ipcidr/googlefcm.list
+      - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/ipcidr/google.list
+
+  - name: microsoft-cn-domain
+    type: domain
+    remote:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/microsoft-cn.mrs
+
+  - name: microsoft-domain
+    type: domain
+    remote:
+      - https://github.com/QuixoticHeart/rule-set/raw/refs/heads/ruleset/meta/domain/microsoft.mrs
+
+  - name: apple-proxy-domain
+    type: domain
+    remote:
+      - https://github.com/QuixoticHeart/rule-set/raw/refs/heads/ruleset/meta/domain/apple-proxy.mrs
+
+  - name: apple-cn-domain
+    type: domain
+    remote:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/apple-cn.mrs
+
+  - name: apple-domain
+    type: domain
+    remote:
+      - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/domain/apns.list
+      - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/domain/apple.list
+
+  - name: apple-ipcidr
+    type: ipcidr
+    remote:
+      - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/ipcidr/apns.list
+      - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/ipcidr/apple.list
+
+  - name: final-direct-domain
+    type: domain
+    remote:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cn-lite.mrs
+
+  - name: final-direct-ipcidr
+    type: ipcidr
+    remote:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cnip.mrs
