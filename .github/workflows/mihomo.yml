@@ -19,7 +19,7 @@ jobs:
 
       - run: |
           curl -fsSL https://github.com/MetaCubeX/mihomo/releases/download/v1.19.21/mihomo-linux-amd64-v3-v1.19.21.gz \
-          | gunzip > mihomo-bin
+            | gunzip > mihomo-bin
           sudo mv mihomo-bin /usr/local/bin/mihomo
           sudo chmod +x /usr/local/bin/mihomo
 
@@ -29,21 +29,26 @@ jobs:
 
       - run: |
           yq -r '.rules[].name' mihomo/rules/manifest.yaml \
-          | xargs -I{} mkdir -p "mihomo/rules/source/{}"
+            | xargs -I{} mkdir -p "mihomo/rules/source/{}"
 
       - run: |
           yq -r '.rules[] | select(.remote) | .name + " " + (.remote[])' mihomo/rules/manifest.yaml \
-          | xargs -n 2 -P 10 sh -c 'curl -fsSL "$2" -o "mihomo/rules/source/$1/${2##*/}"' sh
+            | xargs -n 2 -P 10 sh -c 'curl -fsSL "$2" -o "mihomo/rules/source/$1/${2##*/}"' sh
 
       - run: |
           for d in mihomo/rules/source/*; do
             name="${d##*/}"
             outfile="mihomo/rules/merged/${name}.yaml"
 
+            if compgen -G "$d/*.mrs" > /dev/null; then
+              continue
+            fi
+
             echo "payload:" > "$outfile"
 
-            yq -r ".rules[] | select(.name == \"${name}\" and .inline) | .inline[]" mihomo/rules/manifest.yaml \
-            | sed 's/^/  - /' >> "$outfile"
+            yq -r ".rules[] | select(.name == \"${name}\" and .inline) | .inline[]" \
+              mihomo/rules/manifest.yaml \
+              | sed 's/^/  - /' >> "$outfile"
 
             if ls "$d"/*.yaml > /dev/null 2>&1; then
               yq eval-all '.payload[]' "$d"/*.yaml \
@@ -57,19 +62,19 @@ jobs:
 
       - run: |
           yq -r '.rules[] | "\(.name) \(.type)"' mihomo/rules/manifest.yaml \
-          | while read name type; do
-            source="mihomo/rules/source/${name}"
-            merged="mihomo/rules/merged/${name}.yaml"
-            compiled="mihomo/rules/compiled/${name}.mrs"
+            | while read name type; do
+              source="mihomo/rules/source/${name}"
+              merged="mihomo/rules/merged/${name}.yaml"
+              compiled="mihomo/rules/compiled/${name}.mrs"
 
-            if compgen -G "$source/*.mrs" > /dev/null; then
-              cp "$source"/*.mrs "$compiled"
-            elif [ "$type" = "domain" ] || [ "$type" = "ipcidr" ]; then
-              if [ -f "$merged" ]; then
-                mihomo convert-ruleset "$type" yaml "$merged" "$compiled"
+              if compgen -G "$source/*.mrs" > /dev/null; then
+                cp "$source"/*.mrs "$compiled"
+              elif [ "$type" = "domain" ] || [ "$type" = "ipcidr" ]; then
+                if [ -f "$merged" ]; then
+                  mihomo convert-ruleset "$type" yaml "$merged" "$compiled"
+                fi
               fi
-            fi
-          done
+            done
 
       - run: |
           git config user.name "github-actions[bot]"
