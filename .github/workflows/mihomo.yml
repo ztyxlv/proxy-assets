@@ -46,17 +46,32 @@ jobs:
 
             echo "payload:" > "$outfile"
 
-            yq -r ".rules[] | select(.name == \"${name}\" and .inline) | .inline[]" \
+            yq -r ".rules[] | select(.name == \"${name}\" and .include) | .include[]" \
               mihomo/rules/manifest.yaml \
               | sed 's/^/  - /' >> "$outfile"
 
+            exclude=$(yq -r ".rules[] | select(.name == \"${name}\" and .exclude) | .exclude[]" \
+              mihomo/rules/manifest.yaml)
+
             if ls "$d"/*.yaml > /dev/null 2>&1; then
-              yq eval-all '.payload[]' "$d"/*.yaml \
+              if [ -n "$exclude" ]; then
+                yq eval-all '.payload[]' "$d"/*.yaml \
+                | grep -vFf <(echo "$exclude") \
                 | sed 's/^/  - /' >> "$outfile"
+              else
+                yq eval-all '.payload[]' "$d"/*.yaml \
+                | sed 's/^/  - /' >> "$outfile"
+              fi
             fi
 
             if ls "$d"/*.list > /dev/null 2>&1; then
-              sed 's/^/  - /' "$d"/*.list >> "$outfile"
+              if [ -n "$exclude" ]; then
+                cat "$d"/*.list \
+                | grep -vFf <(echo "$exclude") \
+                | sed 's/^/  - /' >> "$outfile"
+              else
+                sed 's/^/  - /' "$d"/*.list >> "$outfile"
+              fi
             fi
           done
 
