@@ -51,12 +51,12 @@ jobs:
               | sed 's/^/  - /' >> "$outfile"
 
             exclude=$(yq -r ".rules[] | select(.name == \"${name}\" and .exclude) | .exclude[]" \
-              mihomo/rules/manifest.yaml)
+              mihomo/rules/manifest.yaml 2>/dev/null)
 
             if ls "$d"/*.yaml > /dev/null 2>&1; then
               if [ -n "$exclude" ]; then
                 yq eval-all '.payload[]' "$d"/*.yaml \
-                | grep -vxFf <(echo "$exclude") \
+                | grep -vxFf <(printf '%s\n' "$exclude") \
                 | sed 's/^/  - /' >> "$outfile"
               else
                 yq eval-all '.payload[]' "$d"/*.yaml \
@@ -67,7 +67,7 @@ jobs:
             if ls "$d"/*.list > /dev/null 2>&1; then
               if [ -n "$exclude" ]; then
                 cat "$d"/*.list \
-                | grep -vxFf <(echo "$exclude") \
+                | grep -vxFf <(printf '%s\n' "$exclude") \
                 | sed 's/^/  - /' >> "$outfile"
               else
                 sed 's/^/  - /' "$d"/*.list >> "$outfile"
