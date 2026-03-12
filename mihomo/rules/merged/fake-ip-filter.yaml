@@ -1,4 +1,5 @@
 payload:
+  - *.*.xboxlive.com
   - +.126.net
   - +.3gppnetwork.org
   - +.battle.net
@@ -41,6 +42,10 @@ payload:
   - +.square-enix.com
   - +.srv.nintendo.net
   - +.steamcontent.com
+  - +.stun.*.*
+  - +.stun.*.*.*
+  - +.stun.*.*.*.*
+  - +.stun.*.*.*.*.*
   - +.test
   - +.time.edu.cn
   - +.uu.163.com
@@ -64,6 +69,7 @@ payload:
   - joox.com
   - lens.l.google.com
   - local.adguard.org
+  - localhost.*.weixin.qq.com
   - localhost.ptlogin2.qq.com
   - localhost.sec.qq.com
   - mesu.apple.com
@@ -72,6 +78,14 @@ payload:
   - music.taihe.com
   - musicapi.taihe.com
   - na.b.g-tun.com
+  - ntp.*.com
+  - ntp1.*.com
+  - ntp2.*.com
+  - ntp3.*.com
+  - ntp4.*.com
+  - ntp5.*.com
+  - ntp6.*.com
+  - ntp7.*.com
   - proxy.golang.org
   - ps.res.netease.com
   - shark007.net
@@ -84,6 +98,19 @@ payload:
   - swquery.apple.com
   - swscan.apple.com
   - time-ios.apple.com
+  - time.*.apple.com
+  - time.*.com
+  - time.*.edu.cn
+  - time.*.gov
+  - time1.*.com
   - time1.cloud.tencent.com
+  - time2.*.com
+  - time3.*.com
+  - time4.*.com
+  - time5.*.com
+  - time6.*.com
+  - time7.*.com
   - trackercdn.kugou.com
+  - xbox.*.*.microsoft.com
+  - xbox.*.microsoft.com
   - xnotify.xboxlive.com
