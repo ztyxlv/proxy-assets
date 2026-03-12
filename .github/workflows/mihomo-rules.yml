@@ -30,7 +30,7 @@ jobs:
           sudo chmod +x /usr/local/bin/mihomo
 
       - run: |
-          rm -rf mihomo/rules/{source,merged,compiled}
+          rm -rf mihomo/rules/{merged,compiled}
           mkdir -p mihomo/rules/{source,merged,compiled}
 
       - run: |
@@ -46,25 +46,35 @@ jobs:
             name="${d##*/}"
             outfile="mihomo/rules/merged/${name}.yaml"
 
+            type=$(yq -r ".rules[] | select(.name == \"${name}\") | .type" mihomo/rules/manifest.yaml)
+
             if compgen -G "$d/*.mrs" > /dev/null; then
               continue
             fi
 
             echo "payload:" > "$outfile"
 
-            yq -r ".rules[] | select(.name == \"${name}\" and .include) | .include[]" mihomo/rules/manifest.yaml \
-              | sed 's/^/  - /' >> "$outfile"
-
             exclude=$(yq -r ".rules[] | select(.name == \"${name}\" and .exclude) | .exclude[]" mihomo/rules/manifest.yaml 2>/dev/null)
+
+            format_line() {
+              if [ "$type" = "domain" ]; then
+                sed 's/^/  - "/; s/$/"/'
+              else
+                sed 's/^/  - /'
+              fi
+            }
+
+            yq -r ".rules[] | select(.name == \"${name}\" and .include) | .include[]" mihomo/rules/manifest.yaml \
+              | format_line >> "$outfile"
 
             if ls "$d"/*.yaml > /dev/null 2>&1; then
               if [ -n "$exclude" ]; then
                 yq eval-all '.payload[]' "$d"/*.yaml \
                   | grep -vxFf <(printf '%s\n' "$exclude") \
-                  | sed 's/^/  - /' >> "$outfile"
+                  | format_line >> "$outfile"
               else
                 yq eval-all '.payload[]' "$d"/*.yaml \
-                  | sed 's/^/  - /' >> "$outfile"
+                  | format_line >> "$outfile"
               fi
             fi
 
@@ -72,9 +82,10 @@ jobs:
               if [ -n "$exclude" ]; then
                 cat "$d"/*.list \
                   | grep -vxFf <(printf '%s\n' "$exclude") \
-                  | sed 's/^/  - /' >> "$outfile"
+                  | format_line >> "$outfile"
               else
-                sed 's/^/  - /' "$d"/*.list >> "$outfile"
+                cat "$d"/*.list \
+                  | format_line >> "$outfile"
               fi
             fi
           done
