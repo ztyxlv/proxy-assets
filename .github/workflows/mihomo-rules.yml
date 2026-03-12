@@ -10,6 +10,7 @@ on:
   push:
     paths:
       - mihomo/rules/manifest.yaml
+      - .github/workflows/mihomo-rules.yml
 
 jobs:
   build:
@@ -34,7 +35,7 @@ jobs:
 
       - run: |
           yq -r '.rules[].name' mihomo/rules/manifest.yaml \
-            | xargs -I{} mkdir -p "mihomo/rules/source/{}"
+            | xargs -n 1 -P 10 sh -c 'mkdir -p "mihomo/rules/source/$1"' sh
 
       - run: |
           yq -r '.rules[] | select(.remote) | [.name, (.remote[])] | @tsv' mihomo/rules/manifest.yaml \
@@ -51,29 +52,27 @@ jobs:
 
             echo "payload:" > "$outfile"
 
-            yq -r ".rules[] | select(.name == \"${name}\" and .include) | .include[]" \
-              mihomo/rules/manifest.yaml \
+            yq -r ".rules[] | select(.name == \"${name}\" and .include) | .include[]" mihomo/rules/manifest.yaml \
               | sed 's/^/  - /' >> "$outfile"
 
-            exclude=$(yq -r ".rules[] | select(.name == \"${name}\" and .exclude) | .exclude[]" \
-              mihomo/rules/manifest.yaml 2>/dev/null)
+            exclude=$(yq -r ".rules[] | select(.name == \"${name}\" and .exclude) | .exclude[]" mihomo/rules/manifest.yaml 2>/dev/null)
 
             if ls "$d"/*.yaml > /dev/null 2>&1; then
               if [ -n "$exclude" ]; then
                 yq eval-all '.payload[]' "$d"/*.yaml \
-                | grep -vxFf <(printf '%s\n' "$exclude") \
-                | sed 's/^/  - /' >> "$outfile"
+                  | grep -vxFf <(printf '%s\n' "$exclude") \
+                  | sed 's/^/  - /' >> "$outfile"
               else
                 yq eval-all '.payload[]' "$d"/*.yaml \
-                | sed 's/^/  - /' >> "$outfile"
+                  | sed 's/^/  - /' >> "$outfile"
               fi
             fi
 
             if ls "$d"/*.list > /dev/null 2>&1; then
               if [ -n "$exclude" ]; then
                 cat "$d"/*.list \
-                | grep -vxFf <(printf '%s\n' "$exclude") \
-                | sed 's/^/  - /' >> "$outfile"
+                  | grep -vxFf <(printf '%s\n' "$exclude") \
+                  | sed 's/^/  - /' >> "$outfile"
               else
                 sed 's/^/  - /' "$d"/*.list >> "$outfile"
               fi
@@ -81,8 +80,8 @@ jobs:
           done
 
       - run: |
-          yq -r '.rules[] | "\(.name) \(.type)"' mihomo/rules/manifest.yaml \
-            | while read name type; do
+          yq -r '.rules[] | [.name, .type] | @tsv' mihomo/rules/manifest.yaml \
+            | while IFS=$'\t' read -r name type; do
               source="mihomo/rules/source/${name}"
               merged="mihomo/rules/merged/${name}.yaml"
               compiled="mihomo/rules/compiled/${name}.mrs"
@@ -100,5 +99,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add mihomo/rules
-          git commit -m "Updated on $(TZ=Asia/Shanghai date '+%F at %T')" || true
+          git diff --cached --quiet || git commit -m "Updated on $(TZ=Asia/Shanghai date '+%F at %T')"
           git push

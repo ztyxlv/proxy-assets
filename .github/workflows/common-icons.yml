@@ -7,6 +7,7 @@ on:
   push:
     paths:
       - common/icons/manifest.yaml
+      - .github/workflows/common-icons.yml
 
 jobs:
   build:
@@ -20,7 +21,7 @@ jobs:
           sudo chmod +x /usr/local/bin/yq
 
       - run: |
-          sudo apt-get update -y
+          sudo apt-get update
           sudo apt-get install -y librsvg2-bin
 
       - run: |
@@ -33,11 +34,11 @@ jobs:
 
       - run: |
           yq -r '.icons[] | select(.source) | [.name, .category] | @tsv' common/icons/manifest.yaml \
-            | xargs -n 2 sh -c 'rsvg-convert -w 64 "common/icons/$2/svg/$1.svg" -o "common/icons/$2/png/$1.png"' sh
+            | xargs -n 2 -P 10 sh -c 'rsvg-convert -w 64 "common/icons/$2/svg/$1.svg" -o "common/icons/$2/png/$1.png"' sh
 
       - run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add common/icons
-          git commit -m "Updated on $(TZ=Asia/Shanghai date '+%F at %T')" || true
+          git diff --cached --quiet || git commit -m "Updated on $(TZ=Asia/Shanghai date '+%F at %T')"
           git push
