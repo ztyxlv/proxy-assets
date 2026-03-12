@@ -38,7 +38,7 @@ jobs:
             | xargs -n 1 -P 10 sh -c 'mkdir -p "mihomo/rules/source/$1"' sh
 
       - run: |
-          yq -r '.rules[] | select(.remote) | [.name, (.remote[])] | @tsv' mihomo/rules/manifest.yaml \
+          yq -r '.rules[] | select(.remote) | .name + " " + (.remote[])' mihomo/rules/manifest.yaml \
             | xargs -n 2 -P 10 sh -c 'curl -fsSL "$2" -o "mihomo/rules/source/$1/${2##*/}"' sh
 
       - run: |
