@@ -59,6 +59,10 @@ icons:
     category: services
     source: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/apple-light.svg
 
+  - name: proxy
+    category: policies
+    source: https://raw.githubusercontent.com/clash-verge-rev/clash-verge-rev.github.io/main/docs/assets/icons/fish.svg
+
   - name: hk
     category: flags
     source: https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/hk.svg
