@@ -1,0 +1,67 @@
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: "0 20 * * *"
+
+  push:
+    paths:
+      - surge/rules/manifest.yaml
+      - .github/workflows/surge-rules.yml
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - run: |
+          sudo curl -fsSL https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -o /usr/local/bin/yq
+          sudo chmod +x /usr/local/bin/yq
+
+      - run: |
+          rm -rf surge/rules/{source,merged}
+          mkdir -p surge/rules/{source,merged}
+
+      - run: |
+          yq -r '.rules[].name' surge/rules/manifest.yaml \
+            | xargs -n 1 -P 10 sh -c 'mkdir -p "surge/rules/source/$1"' sh
+
+      - run: |
+          yq -r '.rules[] | select(.remote) | .name + " " + (.remote[])' surge/rules/manifest.yaml \
+            | xargs -n 2 -P 10 sh -c 'curl -fsSL "$2" -o "surge/rules/source/$1/${2##*/}"' sh
+
+      - run: |
+          for d in surge/rules/source/*; do
+            name="${d##*/}"
+            outfile="surge/rules/merged/${name}.list"
+
+            > "$outfile"
+
+            exclude=$(yq -r ".rules[] | select(.name == \"${name}\" and .exclude) | .exclude[]" surge/rules/manifest.yaml 2>/dev/null || true)
+
+            yq -r ".rules[] | select(.name == \"${name}\" and .include) | .include[]" surge/rules/manifest.yaml \
+              >> "$outfile"
+
+            if compgen -G "$d/*.list" > /dev/null; then
+              if [ -n "$exclude" ]; then
+                grep -hv '^#' "$d"/*.list \
+                  | grep -vxFf <(printf '%s\n' "$exclude") \
+                  >> "$outfile"
+              else
+                grep -hv '^#' "$d"/*.list \
+                  >> "$outfile"
+              fi
+            fi
+          done
+
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add surge/rules
+          git diff --cached --quiet || git commit -m "Updated on $(TZ=Asia/Shanghai date '+%F at %T')"
+          git push
