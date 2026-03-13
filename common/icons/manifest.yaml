@@ -61,7 +61,7 @@ icons:
 
   - name: proxy
     category: policies
-    source: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/tor.png
+    source: https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/tor-browser-icon.svg
 
   - name: hk
     category: flags
