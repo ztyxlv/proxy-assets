@@ -45,51 +45,50 @@ jobs:
             | xargs -n2 -P10 sh -c 'curl -fsSL "$2" -o "sing-box/rules/source/$1/${2##*/}"' sh
 
       - run: |
-          cat > merge.jq <<-'JQ'
-          def apply_exclude(exc):
+          printf '%s\n' \
+          'def apply_exclude(exc):
             reduce exc[] as $e (.;
-              reduce ($e | to_entries[]) as $item (.;
-                if has($item.key) then
-                  if ($item.value | type) == "array" then
-                    .[$item.key] -= $item.value
-                    | if (.[$item.key] | length) == 0 then del(.[$item.key]) else . end
+              reduce ($e | to_entries[]) as $i (.;
+                if has($i.key) then
+                  if ($i.value|type) == "array" then
+                    .[$i.key] -= $i.value
+                    | if (.[$i.key]|length)==0 then del(.[$i.key]) else . end
                   else
-                    if .[$item.key] == $item.value then del(.[$item.key]) else . end
+                    if .[$i.key] == $i.value then del(.[$i.key]) else . end
                   end
                 else .
                 end
               )
             );
 
+          def merge_rules:
+            reduce .[] as $r ({};
+              reduce ($r | to_entries[]) as $e (.;
+                if ($e.value|type) == "array" then
+                  .[$e.key] = ((.[$e.key] // []) + $e.value)
+                else
+                  .[$e.key] = $e.value
+                end
+              )
+            )
+            | with_entries(
+                if (.value|type) == "array"
+                then .value |= (unique | sort)
+                else .
+                end
+              );
+
           ($remote | map(apply_exclude($exclude))) as $filtered
           | ($filtered + $include) as $all
           | {
               version: 4,
               rules:
-                if ($all | length) == 0 then []
-                else
-                  [
-                    (
-                      reduce $all[] as $r ({}; 
-                        reduce ($r | to_entries[]) as $e (.;
-                          if ($e.value | type) == "array" then
-                            .[$e.key] = ((.[$e.key] // []) + $e.value)
-                          else
-                            .[$e.key] = $e.value
-                          end
-                        )
-                      )
-                      | with_entries(
-                          if (.value | type) == "array"
-                          then .value |= (unique | sort)
-                          else .
-                          end
-                        )
-                    )
-                  ]
+                if ($all|length) == 0
+                then []
+                else [ $all | merge_rules ]
                 end
-            }
-          JQ
+            }' \
+          > merge.jq
 
       - run: |
           for d in sing-box/rules/source/*; do
@@ -100,7 +99,7 @@ jobs:
             exclude=$(yq -o=json ".rules[] | select(.name == \"${name}\") | .exclude // []" sing-box/rules/manifest.yaml)
 
             if compgen -G "$d/*.json" > /dev/null; then
-              remote=$(jq -cs '[.[].rules[]]' "$d"/*.json)
+              remote=$(jq -cs "[.[].rules[]]" "$d"/*.json)
             else
               remote='[]'
             fi
