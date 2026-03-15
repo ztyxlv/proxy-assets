@@ -1,5 +1,4 @@
 payload:
-  - "google-ohttp-relay-safebrowsing.fastly-edge.com"
   - "+.0emm.com"
   - "+.1e100.net"
   - "+.1ucrs.com"
@@ -892,6 +891,7 @@ payload:
   - "android.apis.google.com"
   - "device-provisioning.googleapis.com"
   - "firebaseinstallations.googleapis.com"
+  - "google-ohttp-relay-safebrowsing.fastly-edge.com"
   - "mtalk-dev.google.com"
   - "mtalk-staging.google.com"
   - "mtalk.google.com"
