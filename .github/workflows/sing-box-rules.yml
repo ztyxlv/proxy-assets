@@ -45,8 +45,8 @@ jobs:
             | xargs -n2 -P10 sh -c 'curl -fsSL "$2" -o "sing-box/rules/source/$1/${2##*/}"' sh
 
       - run: |
-          printf '%s\n' \
-          'def apply_exclude(exc):
+          cat > merge.jq << 'EOF'
+          def apply_exclude(exc):
             reduce exc[] as $e (.;
               reduce ($e | to_entries[]) as $i (.;
                 if has($i.key) then
@@ -87,8 +87,8 @@ jobs:
                 then []
                 else [ $all | merge_rules ]
                 end
-            }' \
-          > merge.jq
+            }
+          EOF
 
       - run: |
           for d in sing-box/rules/source/*; do
