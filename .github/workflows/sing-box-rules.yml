@@ -47,7 +47,6 @@ jobs:
       - run: |
           echo 'def apply_exclude(exc): reduce exc[] as $e (.; reduce ($e | to_entries[]) as $i (.; if has($i.key) then if ($i.value|type) == "array" then .[$i.key] -= $i.value | if (.[$i.key]|length)==0 then del(.[$i.key]) else . end else if .[$i.key] == $i.value then del(.[$i.key]) else . end end else . end)); def merge_rules: reduce .[] as $r ({}; reduce ($r | to_entries[]) as $e (.; if ($e.value|type) == "array" then .[$e.key] = ((.[$e.key] // []) + $e.value) else .[$e.key] = $e.value end)) | with_entries(if (.value|type) == "array" then .value |= (unique | sort) else . end); ($remote | map(apply_exclude($exclude))) as $filtered | ($filtered + $include) as $all | {version: 4, rules: (if ($all|length) == 0 then [] else [$all | merge_rules] end)}' > merge.jq
 
-      - run: |
           for d in sing-box/rules/source/*; do
             name="${d##*/}"
             outfile="sing-box/rules/merged/${name}.json"
@@ -56,16 +55,19 @@ jobs:
             exclude=$(yq -o=json ".rules[] | select(.name == \"${name}\") | .exclude // []" sing-box/rules/manifest.yaml)
 
             if compgen -G "$d/*.json" > /dev/null; then
-              remote=$(jq -cs "[.[].rules[]]" "$d"/*.json)
+              jq -cs "[.[].rules[]]" "$d"/*.json > /tmp/remote.json
             else
-              remote='[]'
+              echo '[]' > /tmp/remote.json
             fi
 
-          jq -n \
-              --rawfile remote /tmp/remote.json \
-              --rawfile exclude /tmp/exclude.json \
-              --rawfile include /tmp/include.json \
-              '($remote|fromjson) as $remote | ($exclude|fromjson) as $exclude | ($include|fromjson) as $include' \
+            printf '%s' "$include" > /tmp/include.json
+            printf '%s' "$exclude" > /tmp/exclude.json
+
+            jq -n \
+              --slurpfile remote /tmp/remote.json \
+              --slurpfile exclude /tmp/exclude.json \
+              --slurpfile include /tmp/include.json \
+              '($remote[0]) as $remote | ($exclude[0]) as $exclude | ($include[0]) as $include |' \
               -f merge.jq > "$outfile"
           done
 
