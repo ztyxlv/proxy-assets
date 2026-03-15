@@ -52,11 +52,11 @@ jobs:
 
             if [ -n "$files" ]; then
               if [ -n "$exclude" ]; then
-                grep -hv '^#' $files \
+                grep -hvE '^\s*(#|$)' $files \
                   | grep -vxFf <(printf '%s\n' "$exclude") \
                   >> "$tmp"
               else
-                grep -hv '^#' $files \
+                grep -hvE '^\s*(#|$)' $files \
                   >> "$tmp"
               fi
             fi

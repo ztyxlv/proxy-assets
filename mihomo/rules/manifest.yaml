@@ -8,6 +8,8 @@ rules:
 
   - name: local-direct-domain
     type: domain
+    exclude:
+      - "*"
     remote:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.list
 
