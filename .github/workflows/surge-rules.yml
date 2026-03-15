@@ -29,34 +29,43 @@ jobs:
 
       - run: |
           yq -r '.rules[].name' surge/rules/manifest.yaml \
-            | xargs -n 1 -P 10 sh -c 'mkdir -p "surge/rules/source/$1"' sh
+            | xargs -n1 -P10 sh -c 'mkdir -p "surge/rules/source/$1"' sh
 
       - run: |
           yq -r '.rules[] | select(.remote) | .name + " " + (.remote[])' surge/rules/manifest.yaml \
-            | xargs -n 2 -P 10 sh -c 'curl -fsSL "$2" -o "surge/rules/source/$1/${2##*/}"' sh
+            | xargs -n2 -P10 sh -c 'curl -fsSL "$2" -o "surge/rules/source/$1/${2##*/}"' sh
 
       - run: |
           for d in surge/rules/source/*; do
             name="${d##*/}"
             outfile="surge/rules/merged/${name}.list"
 
-            > "$outfile"
+            tmp="${outfile}.tmp"
 
-            exclude=$(yq -r ".rules[] | select(.name == \"${name}\" and .exclude) | .exclude[]" surge/rules/manifest.yaml 2>/dev/null || true)
+            rm -f "$tmp"
+            : > "$tmp"
 
-            yq -r ".rules[] | select(.name == \"${name}\" and .include) | .include[]" surge/rules/manifest.yaml \
-              >> "$outfile"
+            exclude=$(yq -r ".rules[] | select(.name == \"${name}\") | .exclude[]?" surge/rules/manifest.yaml)
+            include=$(yq -r ".rules[] | select(.name == \"${name}\") | .include[]?" surge/rules/manifest.yaml)
 
             if compgen -G "$d/*.list" > /dev/null; then
               if [ -n "$exclude" ]; then
                 grep -hv '^#' "$d"/*.list \
                   | grep -vxFf <(printf '%s\n' "$exclude") \
-                  >> "$outfile"
+                  >> "$tmp"
               else
                 grep -hv '^#' "$d"/*.list \
-                  >> "$outfile"
+                  >> "$tmp"
               fi
             fi
+
+            if [ -n "$include" ]; then
+              printf '%s\n' "$include" >> "$tmp"
+            fi
+
+            LC_ALL=C sort -u "$tmp" > "$outfile"
+
+            rm -f "$tmp"
           done
 
       - run: |

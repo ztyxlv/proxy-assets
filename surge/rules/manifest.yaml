@@ -1,11 +1,7 @@
 rules:
-  - name: direct
+  - name: local-direct
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/private.list
-
-  - name: reject
-    remote:
-      - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/AdvertisingLite/AdvertisingLite_All_No_Resolve.list
 
   - name: youtube
     remote:
@@ -27,17 +23,9 @@ rules:
     remote:
       - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Telegram/Telegram.list
 
-  - name: github
-    remote:
-      - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GitHub/GitHub.list
-
   - name: speedtest
     remote:
       - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Speedtest/Speedtest.list
-
-  - name: nike
-    remote:
-      - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Nike/Nike.list
 
   - name: game-cn
     remote:
@@ -90,6 +78,10 @@ rules:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/googlefcm.list
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/google.list
 
+  - name: microsoft-github
+    remote:
+      - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GitHub/GitHub.list
+
   - name: microsoft-cn
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/microsoft-cn.list
@@ -110,6 +102,10 @@ rules:
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/apns.list
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/apple.list
+
+  - name: final-proxy-us
+    remote:
+      - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Nike/Nike.list
 
   - name: final-direct
     remote:

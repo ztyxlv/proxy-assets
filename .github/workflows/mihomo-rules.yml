@@ -38,75 +38,72 @@ jobs:
 
       - run: |
           yq -r '.rules[].name' mihomo/rules/manifest.yaml \
-            | xargs -n 1 -P 10 sh -c 'mkdir -p "mihomo/rules/source/$1"' sh
+            | xargs -n1 -P10 sh -c 'mkdir -p "mihomo/rules/source/$1"' sh
 
       - run: |
           yq -r '.rules[] | select(.remote) | .name + " " + (.remote[])' mihomo/rules/manifest.yaml \
-            | xargs -n 2 -P 10 sh -c 'curl -fsSL "$2" -o "mihomo/rules/source/$1/${2##*/}"' sh
+            | xargs -n2 -P10 sh -c 'curl -fsSL "$2" -o "mihomo/rules/source/$1/${2##*/}"' sh
 
       - run: |
           for d in mihomo/rules/source/*; do
             name="${d##*/}"
             outfile="mihomo/rules/merged/${name}.yaml"
 
-            type=$(yq -r ".rules[] | select(.name == \"${name}\") | .type" mihomo/rules/manifest.yaml)
+            tmp="${outfile}.tmp"
+            merged="${outfile}.merged"
 
-            if compgen -G "$d/*.mrs" > /dev/null; then
-              continue
-            fi
+            rm -f "$tmp" "$merged"
+            : > "$merged"
+
+            type=$(yq -r ".rules[] | select(.name == \"${name}\") | .type" mihomo/rules/manifest.yaml)
+            exclude=$(yq -r ".rules[] | select(.name == \"${name}\") | .exclude[]?" mihomo/rules/manifest.yaml)
+            include=$(yq -r ".rules[] | select(.name == \"${name}\") | .include[]?" mihomo/rules/manifest.yaml)
 
             echo "payload:" > "$outfile"
 
-            exclude=$(yq -r ".rules[] | select(.name == \"${name}\" and .exclude) | .exclude[]" mihomo/rules/manifest.yaml 2>/dev/null || true)
-
-            format_line() {
-              if [ "$type" = "domain" ]; then
-                sed 's/^/  - "/; s/$/"/'
-              else
-                sed 's/^/  - /'
-              fi
-            }
-
-            yq -r ".rules[] | select(.name == \"${name}\" and .include) | .include[]" mihomo/rules/manifest.yaml \
-              | format_line >> "$outfile"
-
             if compgen -G "$d/*.yaml" > /dev/null; then
-              if [ -n "$exclude" ]; then
-                yq eval-all '.payload[]' "$d"/*.yaml \
-                  | grep -vxFf <(printf '%s\n' "$exclude") \
-                  | format_line >> "$outfile"
-              else
-                yq eval-all '.payload[]' "$d"/*.yaml \
-                  | format_line >> "$outfile"
-              fi
+              yq eval-all '.payload[]' "$d"/*.yaml >> "$tmp"
             fi
 
             if compgen -G "$d/*.list" > /dev/null; then
+              cat "$d"/*.list >> "$tmp"
+            fi
+
+            if [ -f "$tmp" ]; then
               if [ -n "$exclude" ]; then
-                cat "$d"/*.list \
-                  | grep -vxFf <(printf '%s\n' "$exclude") \
-                  | format_line >> "$outfile"
+                grep -vxFf <(printf '%s\n' "$exclude") "$tmp" >> "$merged"
               else
-                cat "$d"/*.list \
-                  | format_line >> "$outfile"
+                cat "$tmp" >> "$merged"
               fi
             fi
+
+            if [ -n "$include" ]; then
+              printf '%s\n' "$include" >> "$merged"
+            fi
+
+            case "$type" in
+              domain)
+                LC_ALL=C sort -u "$merged" | sed 's/^/  - "/; s/$/"/' >> "$outfile"
+                ;;
+              *)
+                LC_ALL=C sort -u "$merged" | sed 's/^/  - /' >> "$outfile"
+                ;;
+            esac
+
+            rm -f "$tmp" "$merged"
           done
 
       - run: |
           yq -r '.rules[] | [.name, .type] | @tsv' mihomo/rules/manifest.yaml \
             | while IFS=$'\t' read -r name type; do
-              source="mihomo/rules/source/${name}"
               merged="mihomo/rules/merged/${name}.yaml"
               compiled="mihomo/rules/compiled/${name}.mrs"
 
-              if compgen -G "$source/*.mrs" > /dev/null; then
-                cp "$source"/*.mrs "$compiled"
-              elif [ "$type" = "domain" ] || [ "$type" = "ipcidr" ]; then
-                if [ -f "$merged" ]; then
+              case "$type" in
+                domain|ipcidr)
                   mihomo convert-ruleset "$type" yaml "$merged" "$compiled"
-                fi
-              fi
+                  ;;
+              esac
             done
 
       - run: |
