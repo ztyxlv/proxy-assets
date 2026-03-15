@@ -48,13 +48,15 @@ jobs:
             exclude=$(yq -r ".rules[] | select(.name == \"${name}\") | .exclude[]?" surge/rules/manifest.yaml)
             include=$(yq -r ".rules[] | select(.name == \"${name}\") | .include[]?" surge/rules/manifest.yaml)
 
-            if compgen -G "$d/*.list" > /dev/null || compgen -G "$d/*.conf" > /dev/null; then
+            files=$(ls "$d"/*.list "$d"/*.conf 2>/dev/null || true)
+
+            if [ -n "$files" ]; then
               if [ -n "$exclude" ]; then
-                grep -hv '^#' "$d"/*.list "$d"/*.conf 2>/dev/null \
+                grep -hv '^#' $files \
                   | grep -vxFf <(printf '%s\n' "$exclude") \
                   >> "$tmp"
               else
-                grep -hv '^#' "$d"/*.list "$d"/*.conf 2>/dev/null \
+                grep -hv '^#' $files \
                   >> "$tmp"
               fi
             fi
