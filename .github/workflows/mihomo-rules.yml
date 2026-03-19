@@ -3,116 +3,65 @@ permissions:
 
 on:
   workflow_dispatch:
-
   schedule:
     - cron: "0 0 * * *"
-
   push:
     paths:
-      - mihomo/rules/manifest.yaml
       - .github/workflows/mihomo-rules.yml
+      - mihomo/rules/manifest.yaml
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v6
-
       - run: |
-          sudo curl -fsSL https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -o /usr/local/bin/yq
-          sudo chmod +x /usr/local/bin/yq
+          source .github/scripts/build.sh
 
-      - run: |
-          MIHOMO_URL=$(curl -fsSL https://api.github.com/repos/MetaCubeX/mihomo/releases/latest \
-            | yq -r '.assets[] | select(.name | test("mihomo-linux-amd64-v3-v.*\\.gz$")) | .browser_download_url')
+          client="mihomo"
 
-          curl -fsSL "$MIHOMO_URL" \
-            | gunzip > mihomo-bin
-          sudo mv mihomo-bin /usr/local/bin/mihomo
-          sudo chmod +x /usr/local/bin/mihomo
+          manifest="$client/rules/manifest.yaml"
 
-      - run: |
-          rm -rf mihomo/rules/{source,merged,compiled}
-          mkdir -p mihomo/rules/{source,merged,compiled}
+          source_dir="$client/rules/source"
+          merged_dir="$client/rules/merged"
+          compiled_dir="$client/rules/compiled"
 
-      - run: |
-          yq -r '.rules[].name' mihomo/rules/manifest.yaml \
-            | xargs -n1 -P10 sh -c 'mkdir -p "mihomo/rules/source/$1"' sh
+          install_deps "$client"
 
-      - run: |
-          yq -r '.rules[] | select(.remote) | .name + " " + (.remote[])' mihomo/rules/manifest.yaml \
-            | xargs -n2 -P10 sh -c 'curl -fsSL "$2" -o "mihomo/rules/source/$1/${2##*/}"' sh
+          init_rule_dirs "$client"
 
-      - run: |
-          for d in mihomo/rules/source/*; do
-            name="${d##*/}"
-            outfile="mihomo/rules/merged/${name}.yaml"
+          download_rules "$manifest" "$source_dir"
 
-            tmp="${outfile}.tmp"
-            merged="${outfile}.merged"
+          while IFS=$'\t' read -r name type; do
+            merged_temp=$(mktemp)
+            merged_file="$merged_dir/$name.yaml"
 
-            rm -f "$tmp" "$merged"
-            : > "$merged"
+            extract_rules "$source_dir/$name" "$merged_temp"
+            exclude_rules "$manifest" "$name" "$merged_temp"
+            include_rules "$manifest" "$name" "$merged_temp"
 
-            type=$(yq -r ".rules[] | select(.name == \"${name}\") | .type" mihomo/rules/manifest.yaml)
-            exclude=$(yq -r ".rules[] | select(.name == \"${name}\") | .exclude[]?" mihomo/rules/manifest.yaml)
-            include=$(yq -r ".rules[] | select(.name == \"${name}\") | .include[]?" mihomo/rules/manifest.yaml)
+            sort_rules "$merged_temp"
 
-            echo "payload:" > "$outfile"
+            echo "payload:" > "$merged_file"
 
-            if compgen -G "$d/*.yaml" > /dev/null; then
-              yq eval-all '.payload[]' "$d"/*.yaml >> "$tmp"
-            fi
-
-            if compgen -G "$d/*.list" > /dev/null; then
-              cat "$d"/*.list >> "$tmp"
-            fi
-
-            if [ -f "$tmp" ]; then
-              if [ -n "$exclude" ]; then
-                grep -vxFf <(printf '%s\n' "$exclude") "$tmp" >> "$merged"
-              else
-                cat "$tmp" >> "$merged"
-              fi
-            fi
-
-            if [ -n "$include" ]; then
-              printf '%s\n' "$include" >> "$merged"
-            fi
-
-            case "$type" in
+            case $type in
               domain)
-                LC_ALL=C sort -u "$merged" | sed 's/^/  - "/; s/$/"/' >> "$outfile"
+                sed 's/^/  - "/; s/$/"/' "$merged_temp" >> "$merged_file"
+                mihomo convert-ruleset domain yaml "$merged_file" "$compiled_dir/$name.mrs"
+                ;;
+              ipcidr)
+                sed 's/^/  - /' "$merged_temp" >> "$merged_file"
+                mihomo convert-ruleset ipcidr yaml "$merged_file" "$compiled_dir/$name.mrs"
+                ;;
+              classical)
+                sed 's/^/  - /' "$merged_temp" >> "$merged_file"
                 ;;
               *)
-                LC_ALL=C sort -u "$merged" | sed 's/^/  - /' >> "$outfile"
+                exit 1
                 ;;
             esac
 
-            rm -f "$tmp" "$merged"
-          done
+            rm -f "$merged_temp"
+          done < <(yq -r '.rules[] | [.name, .type] | @tsv' "$manifest")
 
-      - run: |
-          yq -r '.rules[] | [.name, .type] | @tsv' mihomo/rules/manifest.yaml \
-            | while IFS=$'\t' read -r name type; do
-              merged="mihomo/rules/merged/${name}.yaml"
-              compiled="mihomo/rules/compiled/${name}.mrs"
-
-              case "$type" in
-                domain|ipcidr)
-                  mihomo convert-ruleset "$type" yaml "$merged" "$compiled"
-                  ;;
-              esac
-            done
-
-      - run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add mihomo/rules
-
-          if ! git diff --cached --quiet; then
-            git commit -m "Updated on $(TZ=Asia/Shanghai date '+%F at %T')"
-            git pull --rebase
-            git push
-          fi
+          sync_rules "$client/rules"
