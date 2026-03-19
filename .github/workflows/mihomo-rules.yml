@@ -13,17 +13,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v6
-
-      - name: Build with debug
-        run: |
-          set -euxo pipefail
-
+      - run: |
           source .github/scripts/build.sh
-
-          trap 'echo "❌ error at line $LINENO"; exit 1' ERR
 
           client="mihomo"
 
@@ -33,76 +26,42 @@ jobs:
           merged_dir="$client/rules/merged"
           compiled_dir="$client/rules/compiled"
 
-          echo "=== install_deps ==="
           install_deps "$client"
 
-          echo "=== init_rule_dirs ==="
           init_rule_dirs "$client"
 
-          echo "=== download_rules ==="
           download_rules "$manifest" "$source_dir"
 
-          echo "=== manifest ==="
-          yq -r '.rules[] | [.name, .type] | @tsv' "$manifest"
-
-          echo "=== build_rules ==="
-
           while IFS=$'\t' read -r name type; do
-            echo ">>> START: $name ($type)"
-
             merged_temp=$(mktemp)
             merged_file="$merged_dir/$name.yaml"
 
-            extract_rules "$source_dir/$name" "$merged_temp" || { echo "❌ extract_rules failed"; exit 1; }
+            extract_rules "$source_dir/$name" "$merged_temp"
+            exclude_rules "$manifest" "$name" "$merged_temp"
+            include_rules "$manifest" "$name" "$merged_temp"
 
-            if [ ! -s "$merged_temp" ]; then
-              echo "⚠️ empty after extract: $name"
-              rm -f "$merged_temp"
-              continue
-            fi
-
-            exclude_rules "$manifest" "$name" "$merged_temp" || { echo "❌ exclude_rules failed"; exit 1; }
-
-            include_rules "$manifest" "$name" "$merged_temp" || { echo "❌ include_rules failed"; exit 1; }
-
-            sort_rules "$merged_temp" || { echo "❌ sort_rules failed"; exit 1; }
-
-            if [ ! -s "$merged_temp" ]; then
-              echo "⚠️ empty after process: $name"
-              rm -f "$merged_temp"
-              continue
-            fi
+            sort_rules "$merged_temp"
 
             echo "payload:" > "$merged_file"
 
             case $type in
               domain)
                 sed 's/^/  - "/; s/$/"/' "$merged_temp" >> "$merged_file"
-                mihomo convert-ruleset domain yaml "$merged_file" "$compiled_dir/$name.mrs" \
-                  || { echo "❌ convert failed: $name"; cat "$merged_file"; exit 1; }
+                mihomo convert-ruleset domain yaml "$merged_file" "$compiled_dir/$name.mrs"
                 ;;
               ipcidr)
                 sed 's/^/  - /' "$merged_temp" >> "$merged_file"
-                mihomo convert-ruleset ipcidr yaml "$merged_file" "$compiled_dir/$name.mrs" \
-                  || { echo "❌ convert failed: $name"; cat "$merged_file"; exit 1; }
+                mihomo convert-ruleset ipcidr yaml "$merged_file" "$compiled_dir/$name.mrs"
                 ;;
               classical)
                 sed 's/^/  - /' "$merged_temp" >> "$merged_file"
                 ;;
               *)
-                echo "❌ unknown type: $type"
                 exit 1
                 ;;
             esac
 
-            echo ">>> generated:"
-            cat "$merged_file"
-
             rm -f "$merged_temp"
-
-            echo ">>> DONE: $name"
-
           done < <(yq -r '.rules[] | [.name, .type] | @tsv' "$manifest")
 
-          echo "=== sync_rules ==="
           sync_rules "$client/rules"
