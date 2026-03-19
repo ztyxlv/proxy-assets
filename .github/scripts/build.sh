@@ -21,7 +21,7 @@ install_mihomo() {
   url=$(curl -fsSL https://api.github.com/repos/MetaCubeX/mihomo/releases/latest \
     | jq -r '.assets[] | select(.name | test("mihomo-linux-amd64-v3-v.*\\.gz$")) | .browser_download_url')
 
-  rm -f /tmp/mihomo
+  rm -rf /tmp/mihomo
 
   curl -fsSL "$url" \
     | gunzip -c > /tmp/mihomo
@@ -36,7 +36,7 @@ install_singbox() {
   url=$(curl -fsSL https://api.github.com/repos/SagerNet/sing-box/releases/latest \
     | yq -r '.assets[] | select(.name | test("sing-box-[0-9.]+-linux-amd64\\.tar\\.gz$")) | .browser_download_url')
 
-  rm -f /tmp/sing-box
+  rm -rf /tmp/sing-box
 
   curl -fsSL "$url" \
     | tar -xz --strip-components=1 --wildcards '*/sing-box' -C /tmp
