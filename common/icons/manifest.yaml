@@ -5,7 +5,7 @@ icons:
 
   - name: bilibili
     category: services
-    source: https://cdn.worldvectorlogo.com/logos/bilibili.svg
+    source: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/bilibili.svg
 
   - name: tiktok
     category: services
