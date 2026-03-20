@@ -62,7 +62,7 @@ rules:
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/paypal.list
 
-  - name: eco
+  - name: ecm
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/ecommerce.list
 
