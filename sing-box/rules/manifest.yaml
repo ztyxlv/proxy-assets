@@ -1,5 +1,5 @@
 rules:
-  - name: local-direct
+  - name: direct
     include:
       - process_name:
           - qbittorrent.exe
@@ -8,50 +8,50 @@ rules:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/private.json
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/privateip.json
 
-  - name: youtube
+  - name: bh
     remote:
-      - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/youtube.json
+      - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/singbox/version4/bahamut.json
 
-  - name: bilibili
+  - name: bb
     remote:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/bilibili.json
 
-  - name: tiktok
+  - name: tt
     remote:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/tiktok.json
 
-  - name: spotify
+  - name: sp
     remote:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/spotify.json
 
-  - name: telegram
+  - name: tg
     remote:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/telegramip.json
 
-  - name: speedtest
+  - name: st
     remote:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/networktest.json
 
-  - name: game-cn
+  - name: gam-cn
     remote:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/games-cn.json
 
-  - name: game
+  - name: gam
     remote:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/games.json
 
-  - name: video-us
+  - name: vdo-us
     remote:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/appletv.json
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/primevideo.json
 
-  - name: video
+  - name: vdo
     remote:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/netflix.json
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/netflixip.json
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/disney.json
 
-  - name: ai-google
+  - name: ais-jp
     include:
       - domain:
           - ai.google.dev
@@ -70,7 +70,7 @@ rules:
           - developerprofiles
           - generativelanguage
 
-  - name: ai-apple
+  - name: ais-us
     include:
       - domain:
           - guzzoni.apple.com
@@ -83,37 +83,41 @@ rules:
       - domain_suffix:
           - smoot.apple.com
 
-  - name: ai
+  - name: ais
     remote:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/ai.json
 
-  - name: crypto
+  - name: cex
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/singbox/version4/crypto.json
 
-  - name: finance
+  - name: fin
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/singbox/version4/paypal.json
 
-  - name: ecommerce
+  - name: ecm
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/singbox/version4/ecommerce.json
 
-  - name: google-voice
+  - name: ggl-hk
+    remote:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/youtube.json
+
+  - name: ggl-us
     include:
       - domain:
           - voice.google.com
 
-  - name: google-cn
+  - name: ggl-cn
     remote:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/google-cn.json
 
-  - name: google
+  - name: ggl
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/singbox/version4/googlefcm.json
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/singbox/version4/google.json
 
-  - name: microsoft-github
+  - name: msf-hk
     include:
       - domain_suffix:
           - dependabot.com
@@ -128,28 +132,28 @@ rules:
       - domain_keyword:
           - github
 
-  - name: microsoft-cn
+  - name: msf-cn
     remote:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/microsoft-cn.json
 
-  - name: microsoft
+  - name: msf
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/singbox/version4/microsoft.json
 
-  - name: apple-proxy
+  - name: apl-ex
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/singbox/version4/apple-proxy.json
 
-  - name: apple-cn
+  - name: apl-cn
     remote:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/apple-cn.json
 
-  - name: apple
+  - name: apl
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/singbox/version4/apns.json
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/singbox/version4/apple.json
 
-  - name: final-direct
+  - name: fnl-direct
     remote:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cn-lite.json
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/cnip.json

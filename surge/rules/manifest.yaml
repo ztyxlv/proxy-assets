@@ -1,110 +1,114 @@
 rules:
-  - name: local-direct
+  - name: direct
     remote:
       - https://ruleset.skk.moe/List/non_ip/lan.conf
       - https://ruleset.skk.moe/List/ip/lan.conf
 
-  - name: youtube
+  - name: bh
     remote:
-      - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/youtube.list
+      - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/bahamut.list
 
-  - name: bilibili
+  - name: bb
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/bilibili.list
 
-  - name: tiktok
+  - name: tt
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/tiktok.list
 
-  - name: spotify
+  - name: sp
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/spotify.list
 
-  - name: telegram
+  - name: tg
     remote:
       - https://ruleset.skk.moe/List/ip/telegram.conf
 
-  - name: speedtest
+  - name: st
     remote:
       - https://ruleset.skk.moe/List/domainset/speedtest.conf
 
-  - name: game-cn
+  - name: gam-cn
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/games-cn.list
 
-  - name: game
+  - name: gam
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/games.list
 
-  - name: video-us
+  - name: vdo-us
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/apple-tv.list
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/primevideo.list
 
-  - name: video
+  - name: vdo
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/netflix.list
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/disney.list
 
-  - name: ai-apple
+  - name: ais-us
     remote:
       - https://ruleset.skk.moe/List/non_ip/apple_intelligence.conf
 
-  - name: ai
+  - name: ais
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/ai.list
 
-  - name: crypto
+  - name: cex
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/crypto.list
 
-  - name: finance
+  - name: fin
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/paypal.list
 
-  - name: ecommerce
+  - name: eco
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/ecommerce.list
 
-  - name: google-voice
+  - name: ggl-yt
+    remote:
+      - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/youtube.list
+
+  - name: ggl-us
     include:
       - DOMAIN,voice.google.com
 
-  - name: google
+  - name: ggl
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/googlefcm.list
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/google.list
 
-  - name: microsoft-github
+  - name: msf-hk
     remote:
       - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/GitHub/GitHub.list
 
-  - name: microsoft-cn
+  - name: msf-cn
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/microsoft-cn.list
 
-  - name: microsoft
+  - name: msf
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/microsoft.list
 
-  - name: apple-proxy
+  - name: apl-ex
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/apple-proxy.list
 
-  - name: apple-cn
+  - name: apl-cn
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/apple-cn.list
 
-  - name: apple
+  - name: apl
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/apns.list
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/apple.list
 
-  - name: final-proxy-us
+  - name: proxy-us
     remote:
       - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Surge/Nike/Nike.list
 
-  - name: final-direct
+  - name: fnl-direct
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/cn.list
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/cncidr.list

@@ -1,73 +1,73 @@
 icons:
-  - name: youtube
+  - name: yt
     category: services
     source: https://cdn.worldvectorlogo.com/logos/youtube-icon-8.svg
 
-  - name: bilibili
+  - name: bb
     category: services
     source: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/bilibili.svg
 
-  - name: tiktok
+  - name: tt
     category: services
     source: https://cdn.worldvectorlogo.com/logos/tiktok-1.svg
 
-  - name: spotify
+  - name: sp
     category: services
     source: https://cdn.worldvectorlogo.com/logos/spotify-2.svg
 
-  - name: telegram
+  - name: tg
     category: services
     source: https://cdn.worldvectorlogo.com/logos/telegram-2019-logo.svg
 
-  - name: speedtest
+  - name: st
     category: services
     source: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/ookla-speedtest.svg
 
-  - name: steam
+  - name: gam
     category: services
     source: https://cdn.worldvectorlogo.com/logos/steam-icon-logo.svg
 
-  - name: netflix
+  - name: vdo
     category: services
     source: https://cdn.worldvectorlogo.com/logos/netflix-logo-icon.svg
 
-  - name: openai
+  - name: ais
     category: services
     source: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai-light.svg
 
-  - name: binance
+  - name: cex
     category: services
     source: https://cdn.worldvectorlogo.com/logos/binance-logo.svg
 
-  - name: paypal
+  - name: fin
     category: services
     source: https://cdn.worldvectorlogo.com/logos/paypal-4.svg
 
-  - name: amazon
+  - name: ecm
     category: services
     source: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/amazon-light.svg
 
-  - name: google
+  - name: ggl
     category: services
     source: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/google.svg
 
-  - name: microsoft
+  - name: msf
     category: services
     source: https://cdn.worldvectorlogo.com/logos/microsoft-5.svg
 
-  - name: apple
+  - name: apl
     category: services
     source: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/apple-light.svg
 
-  - name: proxy
+  - name: prx
     category: policies
     source: https://uxwing.com/wp-content/themes/uxwing/download/location-travel-map/earth-icon.svg
 
-  - name: direct
+  - name: dir
     category: policies
     source: https://uxwing.com/wp-content/themes/uxwing/download/computers-mobile-hardware/connected-plug-icon.svg
 
-  - name: reject
+  - name: rej
     category: policies
     source: https://uxwing.com/wp-content/themes/uxwing/download/computers-mobile-hardware/disconnect-plug-icon.svg
 

@@ -18,17 +18,15 @@ disable-keep-alive: false
 
 find-process-mode: strict
 
-# external-controller: 127.0.0.1:9090
-# external-controller-cors:
-#   allow-origins: ["*"]
-#   allow-private-network: true
-# secret: ""
+external-controller: 127.0.0.1:9090
+external-controller-cors:
+  allow-origins: ["*"]
+  allow-private-network: false
+secret: ""
 
-# external-ui: ./external-ui
+external-ui: dashboard
 
-# external-ui-name: metacubexd
-
-# external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
+external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
 
 profile:
   store-selected: true
@@ -37,10 +35,6 @@ profile:
 unified-delay: true
 
 tcp-concurrent: false
-
-# interface-name: eth0
-
-# routing-mark: 6666
 
 geodata-mode: false
 
@@ -73,11 +67,11 @@ dns:
   fake-ip-filter-mode: rule
   use-hosts: true
   use-system-hosts: true
-  respect-rules: false
-  default-nameserver: [223.6.6.6, 119.29.29.29]
+  respect-rules: true
+  default-nameserver: [system]
   nameserver-policy:
-    "rule-set:direct-private-domain": [system]
-    "rule-set:final-direct-domain": [https://dns.alidns.com/dns-query, https://doh.pub/dns-query]
+    "rule-set:direct-domain": [system]
+    "rule-set:fnl-direct-domain": [https://dns.alidns.com/dns-query, https://doh.pub/dns-query]
   proxy-server-nameserver: [https://dns.alidns.com/dns-query, https://doh.pub/dns-query]
   direct-nameserver: []
   direct-nameserver-follow-policy: false
@@ -99,16 +93,13 @@ mixed-port: 7892
 tun:
   enable: true
   stack: mixed
-  device: aether
+  device: tun0
   auto-route: true
-  # auto-redirect: true
   auto-detect-interface: true
   dns-hijack: [any:53]
   strict-route: true
-  mtu: 1480
-  # gso: true
-  # gso-max-size: 65536
-  udp-timeout: 300
+  mtu: 1440
+  udp-timeout: 90
   iproute2-table-index: 2022
   iproute2-rule-index: 9000
   endpoint-independent-nat: false
@@ -118,12 +109,14 @@ ntp:
   write-to-system: false
   server: ntp.aliyun.com
   port: 123
-  interval: 30
+  interval: 60
 
 proxies:
 
 proxies-custom-hk: &proxies-custom-hk []
+proxies-custom-tw: &proxies-custom-tw []
 proxies-custom-jp: &proxies-custom-jp []
+proxies-custom-sg: &proxies-custom-sg []
 proxies-custom-us: &proxies-custom-us []
 
 proxy-group-custom: &proxy-group-custom
@@ -134,75 +127,75 @@ proxy-group-region: &proxy-group-region
   include-all-proxies: true
 
 proxy-groups:
-  - name: YouTube
+  - name: GAM
     <<: *proxy-group-custom
     proxies: *proxies-custom-hk
-    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/youtube.svg
+    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/gam.svg
 
-  - name: Telegram
+  - name: VDO
     <<: *proxy-group-custom
     proxies: *proxies-custom-hk
-    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/telegram.svg
+    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/vdo.svg
 
-  - name: Game
-    <<: *proxy-group-custom
-    proxies: *proxies-custom-hk
-    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/steam.svg
-
-  - name: Video
-    <<: *proxy-group-custom
-    proxies: *proxies-custom-hk
-    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/netflix.svg
-
-  - name: AI
+  - name: AIS
     <<: *proxy-group-custom
     proxies: *proxies-custom-us
-    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/openai.svg
+    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/ais.svg
 
-  - name: Crypto
+  - name: CEX
     <<: *proxy-group-custom
     proxies: *proxies-custom-jp
-    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/binance.svg
+    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/cex.svg
 
-  - name: Finance
+  - name: FIN
     <<: *proxy-group-custom
     proxies: *proxies-custom-us
-    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/paypal.svg
+    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/fin.svg
 
-  - name: Ecommerce
+  - name: ECM
     <<: *proxy-group-custom
     proxies: *proxies-custom-us
-    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/amazon.svg
+    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/ecm.svg
 
-  - name: Google
+  - name: GGL
     <<: *proxy-group-custom
     proxies: *proxies-custom-hk
-    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/google.svg
+    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/ggl.svg
 
-  - name: Microsoft
+  - name: MSF
     <<: *proxy-group-custom
     proxies: *proxies-custom-hk
-    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/microsoft.svg
+    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/msf.svg
 
-  - name: Apple
+  - name: APL
     <<: *proxy-group-custom
     proxies: *proxies-custom-hk
-    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/apple.svg
+    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/apl.svg
 
-  - name: Proxy
+  - name: PRX
     <<: *proxy-group-custom
     proxies: *proxies-custom-hk
-    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/policies/svg/proxy.svg
+    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/policies/svg/prx.svg
 
   - name: HK
     <<: *proxy-group-region
     filter: HK
     icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/flags/svg/hk.svg
 
+  - name: TW
+    <<: *proxy-group-region
+    filter: TW
+    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/flags/svg/tw.svg
+
   - name: JP
     <<: *proxy-group-region
     filter: JP
     icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/flags/svg/jp.svg
+
+  - name: SG
+    <<: *proxy-group-region
+    filter: SG
+    icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/flags/svg/sg.svg
 
   - name: US
     <<: *proxy-group-region
@@ -232,227 +225,215 @@ rule-providers:
     url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/fake-ip-filter.mrs
     path: ./rulesets/fake-ip-filter.mrs
 
-  direct-private-domain:
-    <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/direct-private-domain.mrs
-    path: ./rulesets/direct-private-domain.mrs
-
-  direct-private-ipcidr:
-    <<: *rule-provider-ipcidr
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/direct-private-ipcidr.mrs
-    path: ./rulesets/direct-private-ipcidr.mrs
-
   direct-domain:
     <<: *rule-provider-domain
     url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/direct-domain.mrs
     path: ./rulesets/direct-domain.mrs
+
+  direct-ipcidr:
+    <<: *rule-provider-ipcidr
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/direct-ipcidr.mrs
+    path: ./rulesets/direct-ipcidr.mrs
 
   direct-classical:
     <<: *rule-provider-classical
     url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/merged/direct-classical.yaml
     path: ./rulesets/direct-classical.yaml
 
-  reject-domain:
+  bh-domain:
     <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/reject-domain.mrs
-    path: ./rulesets/reject-domain.mrs
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/bh-domain.mrs
+    path: ./rulesets/bh-domain.mrs
 
-  reject-classical:
+  bb-domain:
+    <<: *rule-provider-domain
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/bb-domain.mrs
+    path: ./rulesets/bb-domain.mrs
+
+  tt-domain:
+    <<: *rule-provider-domain
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/tt-domain.mrs
+    path: ./rulesets/tt-domain.mrs
+
+  sp-domain:
+    <<: *rule-provider-domain
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/sp-domain.mrs
+    path: ./rulesets/sp-domain.mrs
+
+  tg-ipcidr:
+    <<: *rule-provider-ipcidr
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/tg-ipcidr.mrs
+    path: ./rulesets/tg-ipcidr.mrs
+
+  st-domain:
+    <<: *rule-provider-domain
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/st-domain.mrs
+    path: ./rulesets/st-domain.mrs
+
+  gam-cn-domain:
+    <<: *rule-provider-domain
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/gam-cn-domain.mrs
+    path: ./rulesets/gam-cn-domain.mrs
+
+  gam-domain:
+    <<: *rule-provider-domain
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/gam-domain.mrs
+    path: ./rulesets/gam-domain.mrs
+
+  vdo-us-domain:
+    <<: *rule-provider-domain
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/vdo-us-domain.mrs
+    path: ./rulesets/vdo-us-domain.mrs
+
+  vdo-domain:
+    <<: *rule-provider-domain
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/vdo-domain.mrs
+    path: ./rulesets/vdo-domain.mrs
+
+  vdo-ipcidr:
+    <<: *rule-provider-ipcidr
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/vdo-ipcidr.mrs
+    path: ./rulesets/vdo-ipcidr.mrs
+
+  ais-jp-classical:
     <<: *rule-provider-classical
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/merged/reject-classical.yaml
-    path: ./rulesets/reject-classical.yaml
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/merged/ais-jp-classical.yaml
+    path: ./rulesets/ais-jp-classical.yaml
 
-  youtube-domain:
+  ais-us-domain:
     <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/youtube-domain.mrs
-    path: ./rulesets/youtube-domain.mrs
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/ais-us-domain.mrs
+    path: ./rulesets/ais-us-domain.mrs
 
-  bilibili-domain:
+  ais-domain:
     <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/bilibili-domain.mrs
-    path: ./rulesets/bilibili-domain.mrs
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/ais-domain.mrs
+    path: ./rulesets/ais-domain.mrs
 
-  tiktok-domain:
+  cex-domain:
     <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/tiktok-domain.mrs
-    path: ./rulesets/tiktok-domain.mrs
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/cex-domain.mrs
+    path: ./rulesets/cex-domain.mrs
 
-  spotify-domain:
+  fin-domain:
     <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/spotify-domain.mrs
-    path: ./rulesets/spotify-domain.mrs
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/fin-domain.mrs
+    path: ./rulesets/fin-domain.mrs
 
-  telegram-classical:
+  ecm-domain:
+    <<: *rule-provider-domain
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/ecm-domain.mrs
+    path: ./rulesets/ecm-domain.mrs
+
+  ecm-ipcidr:
+    <<: *rule-provider-ipcidr
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/ecm-ipcidr.mrs
+    path: ./rulesets/ecm-ipcidr.mrs
+
+  ggl-hk-domain:
+    <<: *rule-provider-domain
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/ggl-hk-domain.mrs
+    path: ./rulesets/ggl-hk-domain.mrs
+
+  ggl-us-domain:
+    <<: *rule-provider-domain
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/ggl-us-domain.mrs
+    path: ./rulesets/ggl-us-domain.mrs
+
+  ggl-cn-domain:
+    <<: *rule-provider-domain
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/ggl-cn-domain.mrs
+    path: ./rulesets/ggl-cn-domain.mrs
+
+  ggl-domain:
+    <<: *rule-provider-domain
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/ggl-domain.mrs
+    path: ./rulesets/ggl-domain.mrs
+
+  ggl-ipcidr:
+    <<: *rule-provider-ipcidr
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/ggl-ipcidr.mrs
+    path: ./rulesets/ggl-ipcidr.mrs
+
+  msf-hk-classical:
     <<: *rule-provider-classical
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/merged/telegram-classical.yaml
-    path: ./rulesets/telegram-classical.yaml
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/merged/msf-hk-classical.yaml
+    path: ./rulesets/msf-hk-classical.yaml
 
-  github-classical:
-    <<: *rule-provider-classical
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/merged/github-classical.yaml
-    path: ./rulesets/github-classical.yaml
-
-  speedtest-domain:
+  msf-cn-domain:
     <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/speedtest-domain.mrs
-    path: ./rulesets/speedtest-domain.mrs
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/msf-cn-domain.mrs
+    path: ./rulesets/msf-cn-domain.mrs
 
-  nike-classical:
-    <<: *rule-provider-classical
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/merged/nike-classical.yaml
-    path: ./rulesets/nike-classical.yaml
-
-  game-cn-domain:
+  msf-domain:
     <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/game-cn-domain.mrs
-    path: ./rulesets/game-cn-domain.mrs
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/msf-domain.mrs
+    path: ./rulesets/msf-domain.mrs
 
-  game-domain:
+  apl-ex-domain:
     <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/game-domain.mrs
-    path: ./rulesets/game-domain.mrs
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/apl-ex-domain.mrs
+    path: ./rulesets/apl-ex-domain.mrs
 
-  video-netflix-domain:
+  apl-cn-domain:
     <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/video-netflix-domain.mrs
-    path: ./rulesets/video-netflix-domain.mrs
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/apl-cn-domain.mrs
+    path: ./rulesets/apl-cn-domain.mrs
 
-  video-netflix-ipcidr:
+  apl-domain:
+    <<: *rule-provider-domain
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/apl-domain.mrs
+    path: ./rulesets/apl-domain.mrs
+
+  apl-ipcidr:
     <<: *rule-provider-ipcidr
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/video-netflix-ipcidr.mrs
-    path: ./rulesets/video-netflix-ipcidr.mrs
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/apl-ipcidr.mrs
+    path: ./rulesets/apl-ipcidr.mrs
 
-  video-domain:
+  fnl-direct-domain:
     <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/video-domain.mrs
-    path: ./rulesets/video-domain.mrs
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/fnl-direct-domain.mrs
+    path: ./rulesets/fnl-direct-domain.mrs
 
-  ai-apple-domain:
-    <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/ai-apple-domain.mrs
-    path: ./rulesets/ai-apple-domain.mrs
-
-  ai-domain:
-    <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/ai-domain.mrs
-    path: ./rulesets/ai-domain.mrs
-
-  crypto-domain:
-    <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/crypto-domain.mrs
-    path: ./rulesets/crypto-domain.mrs
-
-  finance-domain:
-    <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/finance-domain.mrs
-    path: ./rulesets/finance-domain.mrs
-
-  ecommerce-domain:
-    <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/ecommerce-domain.mrs
-    path: ./rulesets/ecommerce-domain.mrs
-
-  ecommerce-ipcidr:
+  fnl-direct-ipcidr:
     <<: *rule-provider-ipcidr
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/ecommerce-ipcidr.mrs
-    path: ./rulesets/ecommerce-ipcidr.mrs
-
-  google-voice-domain:
-    <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/google-voice-domain.mrs
-    path: ./rulesets/google-voice-domain.mrs
-
-  google-cn-domain:
-    <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/google-cn-domain.mrs
-    path: ./rulesets/google-cn-domain.mrs
-
-  google-domain:
-    <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/google-domain.mrs
-    path: ./rulesets/google-domain.mrs
-
-  google-ipcidr:
-    <<: *rule-provider-ipcidr
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/google-ipcidr.mrs
-    path: ./rulesets/google-ipcidr.mrs
-
-  microsoft-cn-domain:
-    <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/microsoft-cn-domain.mrs
-    path: ./rulesets/microsoft-cn-domain.mrs
-
-  microsoft-domain:
-    <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/microsoft-domain.mrs
-    path: ./rulesets/microsoft-domain.mrs
-
-  apple-proxy-domain:
-    <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/apple-proxy-domain.mrs
-    path: ./rulesets/apple-proxy-domain.mrs
-
-  apple-cn-domain:
-    <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/apple-cn-domain.mrs
-    path: ./rulesets/apple-cn-domain.mrs
-
-  apple-domain:
-    <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/apple-domain.mrs
-    path: ./rulesets/apple-domain.mrs
-
-  apple-ipcidr:
-    <<: *rule-provider-ipcidr
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/apple-ipcidr.mrs
-    path: ./rulesets/apple-ipcidr.mrs
-
-  final-direct-domain:
-    <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/final-direct-domain.mrs
-    path: ./rulesets/final-direct-domain.mrs
-
-  final-direct-ipcidr:
-    <<: *rule-provider-ipcidr
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/final-direct-ipcidr.mrs
-    path: ./rulesets/final-direct-ipcidr.mrs
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/fnl-direct-ipcidr.mrs
+    path: ./rulesets/fnl-direct-ipcidr.mrs
 
 rules:
-  - RULE-SET,direct-private-domain,DIRECT
-  - RULE-SET,direct-private-ipcidr,DIRECT,no-resolve
   - RULE-SET,direct-domain,DIRECT
+  - RULE-SET,direct-ipcidr,DIRECT,no-resolve
   - RULE-SET,direct-classical,DIRECT
-  - RULE-SET,reject-domain,REJECT
-  - RULE-SET,reject-classical,REJECT
-  - RULE-SET,youtube-domain,YouTube
-  - RULE-SET,bilibili-domain,DIRECT
-  - RULE-SET,tiktok-domain,US
-  - RULE-SET,spotify-domain,US
-  - RULE-SET,telegram-classical,Telegram
-  - RULE-SET,github-classical,HK
-  - RULE-SET,speedtest-domain,DIRECT
-  - RULE-SET,nike-classical,US
-  - RULE-SET,game-cn-domain,DIRECT
-  - RULE-SET,game-domain,Game
-  - RULE-SET,video-netflix-domain,Video
-  - RULE-SET,video-netflix-ipcidr,Video,no-resolve
-  - RULE-SET,video-domain,Video
-  - RULE-SET,ai-apple-domain,US
-  - RULE-SET,ai-domain,AI
-  - RULE-SET,crypto-domain,Crypto
-  - RULE-SET,finance-domain,Finance
-  - RULE-SET,ecommerce-domain,Ecommerce
-  - RULE-SET,ecommerce-ipcidr,Ecommerce,no-resolve
-  - RULE-SET,google-voice-domain,US
-  - RULE-SET,google-cn-domain,DIRECT
-  - RULE-SET,google-domain,Google
-  - RULE-SET,google-ipcidr,Google,no-resolve
-  - RULE-SET,microsoft-cn-domain,DIRECT
-  - RULE-SET,microsoft-domain,Microsoft
-  - RULE-SET,apple-proxy-domain,Apple
-  - RULE-SET,apple-cn-domain,DIRECT
-  - RULE-SET,apple-domain,Apple
-  - RULE-SET,apple-ipcidr,Apple,no-resolve
-  - RULE-SET,final-direct-domain,DIRECT
-  - RULE-SET,final-direct-ipcidr,DIRECT,no-resolve
-  - MATCH,Proxy
+  - RULE-SET,bh-domain,TW
+  - RULE-SET,bb-domain,DIRECT
+  - RULE-SET,tt-domain,US
+  - RULE-SET,sp-domain,US
+  - RULE-SET,tg-ipcidr,HK
+  - RULE-SET,st-domain,DIRECT
+  - RULE-SET,gam-cn-domain,DIRECT
+  - RULE-SET,gam-domain,GAM
+  - RULE-SET,vdo-us-domain,US
+  - RULE-SET,vdo-domain,VDO
+  - RULE-SET,vdo-ipcidr,VDO,no-resolve
+  - RULE-SET,ais-jp-classical,JP
+  - RULE-SET,ais-us-domain,US
+  - RULE-SET,ais-domain,AIS
+  - RULE-SET,cex-domain,CEX
+  - RULE-SET,fin-domain,FIN
+  - RULE-SET,ecm-domain,ECM
+  - RULE-SET,ecm-ipcidr,ECM,no-resolve
+  - RULE-SET,ggl-hk-domain,HK
+  - RULE-SET,ggl-us-domain,US
+  - RULE-SET,ggl-cn-domain,DIRECT
+  - RULE-SET,ggl-domain,GGL
+  - RULE-SET,ggl-ipcidr,GGL,no-resolve
+  - RULE-SET,msf-hk-classical,HK
+  - RULE-SET,msf-cn-domain,DIRECT
+  - RULE-SET,msf-domain,MSF
+  - RULE-SET,apl-ex-domain,APL
+  - RULE-SET,apl-cn-domain,DIRECT
+  - RULE-SET,apl-domain,APL
+  - RULE-SET,apl-ipcidr,APL,no-resolve
+  - RULE-SET,fnl-direct-domain,DIRECT
+  - RULE-SET,fnl-direct-ipcidr,DIRECT,no-resolve
+  - MATCH,PRX
