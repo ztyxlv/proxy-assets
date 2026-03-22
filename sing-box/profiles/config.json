@@ -131,9 +131,10 @@
     { "type": "selector", "tag": "MSF", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
     { "type": "selector", "tag": "APL", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
     { "type": "selector", "tag": "PROXY", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
+    { "type": "selector", "tag": "DIRECT", "interrupt_exist_connections": false, "default": "direct", "outbounds": ["direct"] },
     { "type": "selector", "tag": "HK", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
     { "type": "selector", "tag": "JP", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
     { "type": "selector", "tag": "US", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
-    { "type": "direct", "tag": "DIRECT" }
+    { "type": "direct", "tag": "direct" }
   ]
 }

@@ -242,7 +242,7 @@ rule-providers:
     path: ./rulesets/tg-ipcidr.mrs
 
   gh-classical:
-    <<: *rule-provider-domain
+    <<: *rule-provider-classical
     url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/merged/gh-classical.yaml
     path: ./rulesets/gh-classical.yaml
 
