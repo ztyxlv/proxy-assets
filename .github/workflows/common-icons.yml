@@ -1,12 +1,16 @@
-permissions:
-  contents: write
-
 on:
   workflow_dispatch:
   push:
     paths:
       - .github/workflows/common-icons.yml
       - common/icons/manifest.yaml
+
+concurrency:
+  group: profiles-proxy
+  cancel-in-progress: false
+
+permissions:
+  contents: write
 
 jobs:
   build:
