@@ -1,5 +1,5 @@
 rules:
-  - name: fakeip-filter-domian
+  - name: fakeip-filter-domain
     type: domain
     exclude:
       - "*"
