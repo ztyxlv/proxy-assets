@@ -8,8 +8,8 @@
   "dns": {
     "servers": [
       { "type": "local", "tag": "System" },
-      { "type": "https", "tag": "AliDNS", "server": "223.5.5.5", "detour": "DIRECT" },
-      { "type": "https", "tag": "CloudflareDNS", "server": "1.1.1.1", "detour": "PROXY" }
+      { "type": "https", "tag": "AliDNS", "server": "dns.alidns.com", "detour": "DIRECT" },
+      { "type": "https", "tag": "CloudflareDNS", "server": "cloudflare-dns.com", "detour": "PROXY" }
     ],
     "rules": [
       { "rule_set": "Direct", "action": "route", "server": "System" },

@@ -71,11 +71,11 @@ dns:
   default-nameserver: [system]
   nameserver-policy:
     "rule-set:direct-domain": [system]
-    "rule-set:final-direct-domain": [https://dns.alidns.com/dns-query, https://doh.pub/dns-query]
-  proxy-server-nameserver: [https://dns.alidns.com/dns-query, https://doh.pub/dns-query]
+    "rule-set:final-direct-domain": [https://dns.alidns.com/dns-query]
+  proxy-server-nameserver: [https://dns.alidns.com/dns-query]
   direct-nameserver: []
   direct-nameserver-follow-policy: false
-  nameserver: [https://dns.alidns.com/dns-query, https://cloudflare-dns.com/dns-query]
+  nameserver: [https://cloudflare-dns.com/dns-query]
   fallback: []
   fallback-filter:
     geoip: true
