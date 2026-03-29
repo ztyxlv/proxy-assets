@@ -1,0 +1,9 @@
+version = 1
+[custom]
+exclude_remarks = ["(Traffic|Expire|GB \\||G \\||Premium)"]
+
+clash_rule_base = "base/mihomo.yaml"
+surge_rule_base = "base/surge.conf"
+singbox_rule_base = "base/sing-box.json"
+
+remove_old_emoji = true

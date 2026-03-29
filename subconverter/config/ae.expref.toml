@@ -1,8 +1,0 @@
-version = 1
-[custom]
-exclude_remarks = ["(Traffic|Expire|GB \\||G \\||Premium)"]
-
-clash_rule_base = "base/ae.clash.yaml"
-surge_rule_base = "base/ae.surge.conf"
-
-remove_old_emoji = true

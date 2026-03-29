@@ -72,7 +72,6 @@ dns:
   nameserver-policy:
     "rule-set:fakeip-filter-domain": [system]
     "rule-set:direct-domain": [system]
-    "rule-set:final-direct-domain": [https://dns.alidns.com/dns-query]
   proxy-server-nameserver: [https://dns.alidns.com/dns-query]
   direct-nameserver: []
   direct-nameserver-follow-policy: false

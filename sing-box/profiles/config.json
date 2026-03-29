@@ -14,7 +14,6 @@
     "rules": [
       { "rule_set": "FakeIP-Filter", "action": "route", "server": "System" },
       { "rule_set": "Direct", "action": "route", "server": "System" },
-      { "rule_set": "Final-Direct", "action": "route", "server": "AliDNS" },
       { "query_type": ["A", "AAAA"], "action": "route", "server": "FakeIP" }
     ],
     "final": "AliDNS",
@@ -89,7 +88,7 @@
     "cache_file": {
       "enabled": true,
       "path": "cache.db",
-      "store_fakeip": false,
+      "store_fakeip": true,
       "store_rdrc": false,
       "rdrc_timeout": "7d"
     },

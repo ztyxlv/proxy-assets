@@ -1,0 +1,51 @@
+[[rename_node]]
+match = "^(瑞士|Switzerland)"
+replace = "🇨🇭 CH"
+
+[[rename_node]]
+match = "^(德国|Germany)"
+replace = "🇩🇪 DE"
+
+[[rename_node]]
+match = "^(澳大利亚|Australia)"
+replace = "🇦🇺 AU"
+
+[[rename_node]]
+match = "^(中国香港特别行政区|Hong Kong, China \\(SAR\\)|Hong Kong)"
+replace = "🇭🇰 HK"
+
+[[rename_node]]
+match = "^(荷兰|Netherlands)"
+replace = "🇳🇱 NL"
+
+[[rename_node]]
+match = "^(新加坡|Singapore)"
+replace = "🇸🇬 SG"
+
+[[rename_node]]
+match = "^(英国|United Kingdom)"
+replace = "🇬🇧 GB"
+
+[[rename_node]]
+match = "^(美国|United States)"
+replace = "🇺🇸 US"
+
+[[rename_node]]
+match = "^(韩国|Korea \\(Republic of\\)|South Korea)"
+replace = "🇰🇷 KR"
+
+[[rename_node]]
+match = "^(日本|Japan)"
+replace = "🇯🇵 JP"
+
+[[rename_node]]
+match = "^(法国|France)"
+replace = "🇫🇷 FR"
+
+[[rename_node]]
+match = "^(印度|India)"
+replace = "🇮🇳 IN"
+
+[[rename_node]]
+match = "^(台湾|Taiwan)"
+replace = "🇹🇼 TW"
