@@ -7,26 +7,26 @@
   },
   "dns": {
     "servers": [
-      { "type": "local", "tag": "System" },
-      { "type": "https", "tag": "AliDNS", "server": "dns.alidns.com", "domain_resolver": "System" },
+      { "type": "local", "tag": "Local" },
+      { "type": "https", "tag": "AliDNS", "server": "dns.alidns.com", "domain_resolver": "Local" },
       { "type": "fakeip", "tag": "FakeIP", "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/18" }
     ],
     "rules": [
-      { "rule_set": "FakeIP-Filter", "action": "route", "server": "System" },
-      { "rule_set": "Direct", "action": "route", "server": "System" },
+      { "rule_set": "RealIP", "action": "route", "server": "Local" },
+      { "rule_set": "Direct", "action": "route", "server": "Local" },
       { "query_type": ["A", "AAAA"], "action": "route", "server": "FakeIP" }
     ],
     "final": "AliDNS",
-    "strategy": "ipv4_only",
+    "strategy": "prefer_ipv4",
     "disable_cache": false,
     "disable_expire": false,
-    "independent_cache": false,
     "reverse_mapping": false
   },
   "route": {
     "rules": [
-      { "action": "sniff" },
-      { "protocol": "dns", "action": "hijack-dns" },
+      { "inbound": "tun-in", "action": "sniff" },
+      { "inbound": "tun-in", "protocol": "dns", "action": "hijack-dns" },
+      { "network": "udp", "port": 123, "action": "route", "outbound": "DIRECT" },
       { "rule_set": "Direct", "action": "route", "outbound": "DIRECT" },
       { "rule_set": "YT", "action": "route", "outbound": "HK" },
       { "rule_set": "SP", "action": "route", "outbound": "US" },
@@ -53,7 +53,7 @@
       { "rule_set": "Final-Direct", "action": "route", "outbound": "DIRECT" }
     ],
     "rule_set": [
-      { "type": "remote", "tag": "FakeIP-Filter", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/fakeip-filter.srs" },
+      { "type": "remote", "tag": "RealIP", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/realip.srs" },
       { "type": "remote", "tag": "Direct", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/direct.srs" },
       { "type": "remote", "tag": "YT", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/yt.srs" },
       { "type": "remote", "tag": "SP", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/sp.srs" },
@@ -82,15 +82,13 @@
     "final": "PROXY",
     "auto_detect_interface": true,
     "find_process": false,
-    "default_domain_resolver": "System"
+    "default_domain_resolver": "AliDNS"
   },
   "experimental": {
     "cache_file": {
       "enabled": true,
       "path": "cache.db",
-      "store_fakeip": true,
-      "store_rdrc": false,
-      "rdrc_timeout": "7d"
+      "store_fakeip": true
     },
     "clash_api": {
       "external_controller": "127.0.0.1:9090",
@@ -98,6 +96,7 @@
       "external_ui_download_url": "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
       "external_ui_download_detour": "DIRECT",
       "secret": "",
+      "default_mode": "Rule",
       "access_control_allow_origin": ["*"],
       "access_control_allow_private_network": true
     }
@@ -129,7 +128,7 @@
     { "type": "selector", "tag": "MSF", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
     { "type": "selector", "tag": "APL", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
     { "type": "selector", "tag": "PROXY", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
-    { "type": "selector", "tag": "DIRECT", "interrupt_exist_connections": false, "default": "direct", "outbounds": ["direct"] },
+    { "type": "selector", "tag": "DIRECT", "interrupt_exist_connections": false, "default": "", "outbounds": ["direct"] },
     { "type": "selector", "tag": "HK", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
     { "type": "selector", "tag": "JP", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
     { "type": "selector", "tag": "US", "interrupt_exist_connections": false, "default": "", "outbounds": [] },

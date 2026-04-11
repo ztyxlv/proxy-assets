@@ -1,4 +1,0 @@
-[[custom_groups]]
-name = "Group"
-type = "select"
-rule = [".*"]

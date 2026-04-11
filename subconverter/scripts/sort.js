@@ -24,7 +24,7 @@ function compare(a, b) {
     RU: ["MOW", "LED"]
   };
 
-  var providerPriority = ["NX", "KU", "MS"];
+  var providerPriority = ["NX", "MS"];
 
   var qualityPriority = ["IEPL"];
 

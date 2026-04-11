@@ -62,7 +62,7 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.0/15
   fake-ip-filter:
-    - RULE-SET,fakeip-filter-domain,real-ip
+    - RULE-SET,realip-domain,real-ip
     - MATCH,fake-ip
   fake-ip-filter-mode: rule
   use-hosts: true
@@ -70,7 +70,7 @@ dns:
   respect-rules: true
   default-nameserver: [system]
   nameserver-policy:
-    "rule-set:fakeip-filter-domain": [system]
+    "rule-set:realip-domain": [system]
     "rule-set:direct-domain": [system]
   proxy-server-nameserver: [https://dns.alidns.com/dns-query]
   direct-nameserver: []
@@ -106,9 +106,7 @@ tun:
 
 proxies:
 
-proxies-custom-hk: &proxies-custom-hk []
-proxies-custom-jp: &proxies-custom-jp []
-proxies-custom-us: &proxies-custom-us []
+proxies-all: &proxies-all []
 
 proxy-group-custom: &proxy-group-custom
   type: select
@@ -120,52 +118,52 @@ proxy-group-region: &proxy-group-region
 proxy-groups:
   - name: GAM
     <<: *proxy-group-custom
-    proxies: *proxies-custom-hk
+    proxies: *proxies-all
     icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/gam.svg
 
   - name: VDO
     <<: *proxy-group-custom
-    proxies: *proxies-custom-hk
+    proxies: *proxies-all
     icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/vdo.svg
 
   - name: AIS
     <<: *proxy-group-custom
-    proxies: *proxies-custom-us
+    proxies: *proxies-all
     icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/ais.svg
 
   - name: CEX
     <<: *proxy-group-custom
-    proxies: *proxies-custom-jp
+    proxies: *proxies-all
     icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/cex.svg
 
   - name: FIN
     <<: *proxy-group-custom
-    proxies: *proxies-custom-us
+    proxies: *proxies-all
     icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/fin.svg
 
   - name: ECM
     <<: *proxy-group-custom
-    proxies: *proxies-custom-us
+    proxies: *proxies-all
     icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/ecm.svg
 
   - name: GGL
     <<: *proxy-group-custom
-    proxies: *proxies-custom-hk
+    proxies: *proxies-all
     icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/ggl.svg
 
   - name: MSF
     <<: *proxy-group-custom
-    proxies: *proxies-custom-hk
+    proxies: *proxies-all
     icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/msf.svg
 
   - name: APL
     <<: *proxy-group-custom
-    proxies: *proxies-custom-hk
+    proxies: *proxies-all
     icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/services/svg/apl.svg
 
   - name: PROXY
     <<: *proxy-group-custom
-    proxies: *proxies-custom-hk
+    proxies: *proxies-all
     icon: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/common/icons/policies/svg/proxy.svg
 
   - name: HK
@@ -201,10 +199,10 @@ rule-provider-classical: &rule-provider-classical
   behavior: classical
 
 rule-providers:
-  fakeip-filter-domain:
+  realip-domain:
     <<: *rule-provider-domain
-    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/fakeip-filter-domain.mrs
-    path: ./rulesets/fakeip-filter-domain.mrs
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/realip-domain.mrs
+    path: ./rulesets/realip-domain.mrs
 
   direct-domain:
     <<: *rule-provider-domain

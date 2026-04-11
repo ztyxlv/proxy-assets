@@ -63,7 +63,7 @@ match = "^(美国|United States)"
 replace = "🇺🇸 US"
 
 [[rename_node]]
-match = "^(韩国|Korea \\(Republic of\\)|Korea)"
+match = "^(韩国|Korea \\(Republic of\\)|South Korea|Korea)"
 replace = "🇰🇷 KR"
 
 [[rename_node]]

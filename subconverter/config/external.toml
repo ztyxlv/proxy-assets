@@ -6,4 +6,11 @@ clash_rule_base = "base/mihomo.yaml"
 surge_rule_base = "base/surge.conf"
 singbox_rule_base = "base/sing-box.json"
 
-remove_old_emoji = true
+[[custom_groups]]
+name = "Proxy"
+type = "select"
+rule = [".*"]
+
+[[rulesets]]
+group = "Proxy"
+ruleset = "[]MATCH"

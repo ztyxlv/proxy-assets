@@ -1,5 +1,5 @@
 rules:
-  - name: fakeip-filter
+  - name: realip
     remote:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/fakeip-filter.json
 
