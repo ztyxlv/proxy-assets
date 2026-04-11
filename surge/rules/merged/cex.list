@@ -1,15 +1,10 @@
 DOMAIN,bybit-exchange.github.io
 DOMAIN,bybit.ada.support
-DOMAIN,coinglass.com
 DOMAIN,d3r7nsslvs6aaf.cloudfront.net
 DOMAIN,deribit.cdn.prismic.io
-DOMAIN,intel.arkm.com
-DOMAIN,news.treeofalpha.com
 DOMAIN,onekey.zendesk.com
 DOMAIN,straitsx-826709081262441084-b790f87a2ae6fd417434295.freshchat.com
 DOMAIN,token-api.metaswap.codefi.network
-DOMAIN,tradingview.com
-DOMAIN,whale-alert.io
 DOMAIN-KEYWORD,binance
 DOMAIN-KEYWORD,huobi
 DOMAIN-KEYWORD,metamask
@@ -240,6 +235,7 @@ DOMAIN-SUFFIX,huobigroup.com
 DOMAIN-SUFFIX,huobitoken.com
 DOMAIN-SUFFIX,icodrops.com
 DOMAIN-SUFFIX,infura.io
+DOMAIN-SUFFIX,intel.arkm.com
 DOMAIN-SUFFIX,intotheblock.com
 DOMAIN-SUFFIX,invity.io
 DOMAIN-SUFFIX,ipfs.io
@@ -270,6 +266,7 @@ DOMAIN-SUFFIX,mocortech.com
 DOMAIN-SUFFIX,myetherwallet.com
 DOMAIN-SUFFIX,mytokenapi.com
 DOMAIN-SUFFIX,nansen.ai
+DOMAIN-SUFFIX,news.treeofalpha.com
 DOMAIN-SUFFIX,nexo.com
 DOMAIN-SUFFIX,nexo.io
 DOMAIN-SUFFIX,nftcalendar.io
@@ -350,6 +347,7 @@ DOMAIN-SUFFIX,walletconnect.org
 DOMAIN-SUFFIX,watchtheburn.com
 DOMAIN-SUFFIX,wbtc.network
 DOMAIN-SUFFIX,web3modal.org
+DOMAIN-SUFFIX,whale-alert.io
 DOMAIN-SUFFIX,wintermute.com
 DOMAIN-SUFFIX,wise.com
 DOMAIN-SUFFIX,wisecoin.com
