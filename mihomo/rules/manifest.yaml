@@ -88,14 +88,17 @@ rules:
 
   - name: cex-domain
     type: domain
-    include:
-      - coinglass.com
-      - tradingview.com
-      - news.treeofalpha.com
-      - whale-alert.io
-      - intel.arkm.com
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/domain/crypto.list
+
+  - name: cex-classical
+    type: classical
+    include:
+      - DOMAIN-SUFFIX,coinglass.com
+      - DOMAIN-SUFFIX,tradingview.com
+      - DOMAIN-SUFFIX,news.treeofalpha.com
+      - DOMAIN-SUFFIX,whale-alert.io
+      - DOMAIN-SUFFIX,intel.arkm.com
 
   - name: fin-domain
     type: domain

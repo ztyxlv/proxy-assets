@@ -284,6 +284,11 @@ rule-providers:
     url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/cex-domain.mrs
     path: ./rulesets/cex-domain.mrs
 
+  cex-classical:
+    <<: *rule-provider-classical
+    url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/merged/cex-classical.yaml
+    path: ./rulesets/cex-classical.yaml
+
   fin-domain:
     <<: *rule-provider-domain
     url: https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/mihomo/rules/compiled/fin-domain.mrs
@@ -376,6 +381,7 @@ rules:
   - RULE-SET,ais-us-domain,US
   - RULE-SET,ais-domain,AIS
   - RULE-SET,cex-domain,CEX
+  - RULE-SET,cex-classical,CEX
   - RULE-SET,fin-domain,FIN
   - RULE-SET,ecm-domain,ECM
   - RULE-SET,ecm-ipcidr,ECM,no-resolve

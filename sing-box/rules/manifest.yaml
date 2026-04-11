@@ -96,7 +96,7 @@ rules:
 
   - name: cex
     include:
-      - domain:
+      - domain_suffix:
           - coinglass.com
           - tradingview.com
           - news.treeofalpha.com
