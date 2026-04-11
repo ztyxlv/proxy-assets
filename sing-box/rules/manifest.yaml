@@ -95,6 +95,13 @@ rules:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/sing-box-ruleset/ai.json
 
   - name: cex
+    include:
+      - domain:
+          - coinglass.com
+          - tradingview.com
+          - news.treeofalpha.com
+          - whale-alert.io
+          - intel.arkm.com
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/singbox/version4/crypto.json
 

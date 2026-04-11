@@ -54,6 +54,12 @@ rules:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/ai.list
 
   - name: cex
+    include:
+      - DOMAIN,coinglass.com
+      - DOMAIN,tradingview.com
+      - DOMAIN,news.treeofalpha.com
+      - DOMAIN,whale-alert.io
+      - DOMAIN,intel.arkm.com
     remote:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/crypto.list
 
