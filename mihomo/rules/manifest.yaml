@@ -95,6 +95,7 @@ rules:
     type: classical
     include:
       - DOMAIN-SUFFIX,coinglass.com
+      - DOMAIN-SUFFIX,coingecko.com
       - DOMAIN-SUFFIX,tradingview.com
       - DOMAIN-SUFFIX,news.treeofalpha.com
       - DOMAIN-SUFFIX,whale-alert.io
