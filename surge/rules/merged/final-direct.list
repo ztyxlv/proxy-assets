@@ -106704,7 +106704,6 @@ DOMAIN-SUFFIX,yodao.info
 DOMAIN-SUFFIX,yodao.net
 DOMAIN-SUFFIX,yodao.org
 DOMAIN-SUFFIX,yodiya.com
-DOMAIN-SUFFIX,yodo1.com
 DOMAIN-SUFFIX,yodo1api.com
 DOMAIN-SUFFIX,yodou.com
 DOMAIN-SUFFIX,yoduzw.com
@@ -117692,8 +117691,6 @@ IP-CIDR,147.243.30.128/27,no-resolve
 IP-CIDR,147.243.30.64/26,no-resolve
 IP-CIDR,147.78.132.0/22,no-resolve
 IP-CIDR,148.70.0.0/16,no-resolve
-IP-CIDR,149.134.148.0/24,no-resolve
-IP-CIDR,149.134.152.0/24,no-resolve
 IP-CIDR,149.41.0.0/16,no-resolve
 IP-CIDR,15.230.141.0/24,no-resolve
 IP-CIDR,15.230.41.0/24,no-resolve
@@ -131730,6 +131727,9 @@ IP-CIDR6,2a0f:7802:e104::/47,no-resolve
 IP-CIDR6,2a0f:7802:e108::/48,no-resolve
 IP-CIDR6,2a0f:7802:e111::/48,no-resolve
 IP-CIDR6,2a0f:7802:e138::/48,no-resolve
+IP-CIDR6,2a0f:7803:fa21::/48,no-resolve
+IP-CIDR6,2a0f:7803:fa22::/47,no-resolve
+IP-CIDR6,2a0f:7803:fa24::/46,no-resolve
 IP-CIDR6,2a0f:7803:faf3::/48,no-resolve
 IP-CIDR6,2a0f:7803:fc00::/39,no-resolve
 IP-CIDR6,2a0f:7803:ff10:2000::/51,no-resolve
