@@ -1573,6 +1573,15 @@
         "xn--ruq8a011kt6y.xn--hxt814e",
         "yourmonsterbeats.com"
       ],
+      "domain_keyword": [
+        "apple-support.akadns.net",
+        "apple.com.akadns.net",
+        "apple.com.edgekey.net",
+        "buy.itunes.apple.com",
+        "icloud.com.akadns.net",
+        "smp-device",
+        "testflight"
+      ],
       "ip_cidr": [
         "139.178.128.0/18",
         "144.178.0.0/19",
@@ -1597,15 +1606,6 @@
         "2a01:b747::/32",
         "63.92.224.0/19",
         "65.199.22.0/23"
-      ],
-      "domain_keyword": [
-        "apple-support.akadns.net",
-        "apple.com.akadns.net",
-        "apple.com.edgekey.net",
-        "buy.itunes.apple.com",
-        "icloud.com.akadns.net",
-        "smp-device",
-        "testflight"
       ]
     }
   ]
