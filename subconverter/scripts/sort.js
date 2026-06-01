@@ -26,7 +26,7 @@ function compare(a, b) {
 
   var providerPriority = ["NX", "MS"];
 
-  var qualityPriority = ["IEPL"];
+  var qualityPriority = ["DDC"];
 
   function buildRank(arr, offset) {
     var map = {};

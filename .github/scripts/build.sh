@@ -90,7 +90,7 @@ download_rules() {
   local source_dir="$2"
 
   # shellcheck disable=SC2016
-  yq -r '.rules[] | select(.remote) | .name + " " + (.remote[])' "$manifest" \
+  yq -r '.rules[] | select(.ruleset) | .name + " " + (.ruleset[])' "$manifest" \
     | xargs -n2 -P10 sh -c 'curl -fsSL "$2" --create-dirs -o "'"$source_dir"'/$1/${2##*/}"' sh
 }
 

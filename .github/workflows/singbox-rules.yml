@@ -1,7 +1,7 @@
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "3 0 * * *"
   push:
     paths:
       - .github/workflows/singbox-rules.yml
@@ -49,7 +49,7 @@ jobs:
               echo '[]'
             fi \
               | jq -n \
-                  --slurpfile remote /dev/stdin \
+                  --slurpfile ruleset /dev/stdin \
                   --argjson exclude "$exclude" \
                   --argjson include "$include" \
                   -f "$jq_script" > "$merged_file"

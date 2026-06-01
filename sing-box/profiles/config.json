@@ -1,7 +1,7 @@
 {
   "log": {
     "disabled": false,
-    "level": "warn",
+    "level": "info",
     "output": "sing-box.log",
     "timestamp": true
   },
@@ -9,64 +9,59 @@
     "servers": [
       { "type": "local", "tag": "Local" },
       { "type": "https", "tag": "AliDNS", "server": "dns.alidns.com", "domain_resolver": "Local" },
-      { "type": "fakeip", "tag": "FakeIP", "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/18" }
+      { "type": "fakeip", "tag": "Fake-IP", "inet4_range": "198.18.0.1/16", "inet6_range": "fdfe:dcba:9876::1/64" }
     ],
     "rules": [
-      { "rule_set": "RealIP", "action": "route", "server": "Local" },
-      { "rule_set": "Direct", "action": "route", "server": "Local" },
-      { "query_type": ["A", "AAAA"], "action": "route", "server": "FakeIP" }
+      { "rule_set": "Real-IP", "server": "Local" },
+      { "rule_set": "Direct", "server": "Local" },
+      { "query_type": ["A", "AAAA"], "server": "Fake-IP" }
     ],
     "final": "AliDNS",
-    "strategy": "ipv4_only",
-    "disable_cache": false,
-    "disable_expire": false,
-    "reverse_mapping": false
+    "strategy": "prefer_ipv4"
   },
   "route": {
     "rules": [
       { "inbound": "tun-in", "action": "sniff" },
       { "inbound": "tun-in", "protocol": "dns", "action": "hijack-dns" },
-      { "network": "udp", "port": 123, "action": "route", "outbound": "DIRECT" },
-      { "rule_set": "Direct", "action": "route", "outbound": "DIRECT" },
-      { "rule_set": "YT", "action": "route", "outbound": "HK" },
-      { "rule_set": "SP", "action": "route", "outbound": "US" },
-      { "rule_set": "TG", "action": "route", "outbound": "HK" },
-      { "rule_set": "GH", "action": "route", "outbound": "HK" },
-      { "rule_set": "GAM-CN", "action": "route", "outbound": "DIRECT" },
-      { "rule_set": "GAM", "action": "route", "outbound": "GAM" },
-      { "rule_set": "VDO-US", "action": "route", "outbound": "US" },
-      { "rule_set": "VDO", "action": "route", "outbound": "VDO" },
-      { "rule_set": "AIS-JP", "action": "route", "outbound": "JP" },
-      { "rule_set": "AIS-US", "action": "route", "outbound": "US" },
-      { "rule_set": "AIS", "action": "route", "outbound": "AIS" },
-      { "rule_set": "CEX", "action": "route", "outbound": "CEX" },
-      { "rule_set": "FIN", "action": "route", "outbound": "FIN" },
-      { "rule_set": "ECM", "action": "route", "outbound": "ECM" },
-      { "rule_set": "GGL-US", "action": "route", "outbound": "US" },
-      { "rule_set": "GGL-CN", "action": "route", "outbound": "DIRECT" },
-      { "rule_set": "GGL", "action": "route", "outbound": "GGL" },
-      { "rule_set": "MSF-CN", "action": "route", "outbound": "DIRECT" },
-      { "rule_set": "MSF", "action": "route", "outbound": "MSF" },
-      { "rule_set": "APL-EX", "action": "route", "outbound": "APL" },
-      { "rule_set": "APL-CN", "action": "route", "outbound": "DIRECT" },
-      { "rule_set": "APL", "action": "route", "outbound": "APL" },
-      { "rule_set": "Final-Direct", "action": "route", "outbound": "DIRECT" }
+      { "network": "udp", "port": 123, "outbound": "DIRECT" },
+      { "rule_set": "Direct", "outbound": "DIRECT" },
+      { "rule_set": "YT", "outbound": "YT" },
+      { "rule_set": "SP", "outbound": "US" },
+      { "rule_set": "TG", "outbound": "TG" },
+      { "rule_set": "GH", "outbound": "HK" },
+      { "rule_set": "NK", "outbound": "US" },
+      { "rule_set": "GAM-CN", "outbound": "DIRECT" },
+      { "rule_set": "GAM", "outbound": "GAM" },
+      { "rule_set": "VDO", "outbound": "VDO" },
+      { "rule_set": "AIS-US", "outbound": "US" },
+      { "rule_set": "AIS", "outbound": "AIS" },
+      { "rule_set": "CRP", "outbound": "CRP" },
+      { "rule_set": "FIN", "outbound": "FIN" },
+      { "rule_set": "ECM", "outbound": "ECM" },
+      { "rule_set": "GGL-US", "outbound": "US" },
+      { "rule_set": "GGL-CN", "outbound": "DIRECT" },
+      { "rule_set": "GGL", "outbound": "GGL" },
+      { "rule_set": "MSF-CN", "outbound": "DIRECT" },
+      { "rule_set": "MSF", "outbound": "MSF" },
+      { "rule_set": "APL-EX", "outbound": "APL" },
+      { "rule_set": "APL-CN", "outbound": "DIRECT" },
+      { "rule_set": "APL", "outbound": "APL" },
+      { "rule_set": "China", "outbound": "DIRECT" }
     ],
     "rule_set": [
-      { "type": "remote", "tag": "RealIP", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/realip.srs" },
+      { "type": "remote", "tag": "Real-IP", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/real-ip.srs" },
       { "type": "remote", "tag": "Direct", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/direct.srs" },
       { "type": "remote", "tag": "YT", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/yt.srs" },
       { "type": "remote", "tag": "SP", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/sp.srs" },
       { "type": "remote", "tag": "TG", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/tg.srs" },
       { "type": "remote", "tag": "GH", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/gh.srs" },
+      { "type": "remote", "tag": "NK", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/nk.srs" },
       { "type": "remote", "tag": "GAM-CN", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/gam-cn.srs" },
       { "type": "remote", "tag": "GAM", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/gam.srs" },
-      { "type": "remote", "tag": "VDO-US", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/vdo-us.srs" },
       { "type": "remote", "tag": "VDO", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/vdo.srs" },
-      { "type": "remote", "tag": "AIS-JP", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/ais-jp.srs" },
       { "type": "remote", "tag": "AIS-US", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/ais-us.srs" },
       { "type": "remote", "tag": "AIS", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/ais.srs" },
-      { "type": "remote", "tag": "CEX", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/cex.srs" },
+      { "type": "remote", "tag": "CRP", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/crp.srs" },
       { "type": "remote", "tag": "FIN", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/fin.srs" },
       { "type": "remote", "tag": "ECM", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/ecm.srs" },
       { "type": "remote", "tag": "GGL-US", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/ggl-us.srs" },
@@ -77,61 +72,55 @@
       { "type": "remote", "tag": "APL-EX", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/apl-ex.srs" },
       { "type": "remote", "tag": "APL-CN", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/apl-cn.srs" },
       { "type": "remote", "tag": "APL", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/apl.srs" },
-      { "type": "remote", "tag": "Final-Direct", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/final-direct.srs" }
+      { "type": "remote", "tag": "China", "download_detour": "DIRECT", "url": "https://raw.githubusercontent.com/ztyxlv/profiles-proxy/main/sing-box/rules/compiled/china.srs" }
     ],
-    "final": "PROXY",
+    "final": "PRX",
     "auto_detect_interface": true,
-    "find_process": false,
-    "default_domain_resolver": "AliDNS"
+    "default_domain_resolver": "Local"
   },
   "experimental": {
     "cache_file": {
       "enabled": true,
-      "path": "cache.db",
       "store_fakeip": true
     },
     "clash_api": {
       "external_controller": "127.0.0.1:9090",
       "external_ui": "dashboard",
       "external_ui_download_url": "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip",
-      "external_ui_download_detour": "DIRECT",
-      "secret": "",
-      "default_mode": "Rule",
-      "access_control_allow_origin": ["*"],
-      "access_control_allow_private_network": true
+      "external_ui_download_detour": "DIRECT"
     }
   },
   "inbounds": [
     {
       "type": "tun",
       "tag": "tun-in",
-      "interface_name": "tun0",
+      "interface_name": "sing-box",
       "address": ["172.18.0.1/30", "fdfe:dcba:9876::1/126"],
       "mtu": 1440,
       "auto_route": true,
-      "iproute2_table_index": 2022,
-      "iproute2_rule_index": 9000,
       "strict_route": true,
-      "endpoint_independent_nat": false,
-      "udp_timeout": "90s",
       "stack": "mixed"
     }
   ],
   "outbounds": [
-    { "type": "selector", "tag": "GAM", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
-    { "type": "selector", "tag": "VDO", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
-    { "type": "selector", "tag": "AIS", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
-    { "type": "selector", "tag": "CEX", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
-    { "type": "selector", "tag": "FIN", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
-    { "type": "selector", "tag": "ECM", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
-    { "type": "selector", "tag": "GGL", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
-    { "type": "selector", "tag": "MSF", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
-    { "type": "selector", "tag": "APL", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
-    { "type": "selector", "tag": "PROXY", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
-    { "type": "selector", "tag": "DIRECT", "interrupt_exist_connections": false, "default": "", "outbounds": ["direct"] },
-    { "type": "selector", "tag": "HK", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
-    { "type": "selector", "tag": "JP", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
-    { "type": "selector", "tag": "US", "interrupt_exist_connections": false, "default": "", "outbounds": [] },
+    { "type": "selector", "tag": "GAM", "default": "", "outbounds": ["DIRECT"] },
+    { "type": "selector", "tag": "VDO", "default": "", "outbounds": ["DIRECT"] },
+    { "type": "selector", "tag": "AIS", "default": "", "outbounds": ["DIRECT"] },
+    { "type": "selector", "tag": "CRP", "default": "", "outbounds": ["DIRECT"] },
+    { "type": "selector", "tag": "FIN", "default": "", "outbounds": ["DIRECT"] },
+    { "type": "selector", "tag": "ECM", "default": "", "outbounds": ["DIRECT"] },
+    { "type": "selector", "tag": "GGL", "default": "", "outbounds": ["DIRECT"] },
+    { "type": "selector", "tag": "MSF", "default": "", "outbounds": ["DIRECT"] },
+    { "type": "selector", "tag": "APL", "default": "", "outbounds": ["DIRECT"] },
+    { "type": "selector", "tag": "PRX", "default": "", "outbounds": ["DIRECT"] },
+    { "type": "selector", "tag": "YT", "default": "", "outbounds": ["DIRECT"] },
+    { "type": "selector", "tag": "TG", "default": "", "outbounds": ["DIRECT"] },
+    { "type": "urltest", "tag": "HK", "url": "https://cp.cloudflare.com/generate_204", "interval": "1800s", "tolerance": 30, "outbounds": [] },
+    { "type": "urltest", "tag": "TW", "url": "https://cp.cloudflare.com/generate_204", "interval": "1800s", "tolerance": 30, "outbounds": [] },
+    { "type": "urltest", "tag": "JP", "url": "https://cp.cloudflare.com/generate_204", "interval": "1800s", "tolerance": 30, "outbounds": [] },
+    { "type": "urltest", "tag": "SG", "url": "https://cp.cloudflare.com/generate_204", "interval": "1800s", "tolerance": 30, "outbounds": [] },
+    { "type": "urltest", "tag": "US", "url": "https://cp.cloudflare.com/generate_204", "interval": "1800s", "tolerance": 30, "outbounds": [] },
+    { "type": "selector", "tag": "DIRECT", "outbounds": ["direct"] },
     { "type": "direct", "tag": "direct" }
   ]
 }

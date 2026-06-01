@@ -1,88 +1,76 @@
 icons:
-  - name: yt
-    category: services
-    source: https://cdn.worldvectorlogo.com/logos/youtube-icon-8.svg
-
-  - name: tt
-    category: services
-    source: https://cdn.worldvectorlogo.com/logos/tiktok-1.svg
-
-  - name: sp
-    category: services
-    source: https://cdn.worldvectorlogo.com/logos/spotify-2.svg
-
-  - name: tg
-    category: services
-    source: https://cdn.worldvectorlogo.com/logos/telegram-2019-logo.svg
-
-  - name: st
-    category: services
-    source: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/ookla-speedtest.svg
-
   - name: gam
-    category: services
+    type: services
     source: https://cdn.worldvectorlogo.com/logos/steam-icon-logo.svg
 
   - name: vdo
-    category: services
+    type: services
     source: https://cdn.worldvectorlogo.com/logos/netflix-logo-icon.svg
 
   - name: ais
-    category: services
+    type: services
     source: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai-light.svg
 
-  - name: cex
-    category: services
+  - name: crp
+    type: services
     source: https://cdn.worldvectorlogo.com/logos/binance-logo.svg
 
   - name: fin
-    category: services
+    type: services
     source: https://cdn.worldvectorlogo.com/logos/paypal-4.svg
 
   - name: ecm
-    category: services
+    type: services
     source: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/amazon-light.svg
 
   - name: ggl
-    category: services
+    type: services
     source: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/google.svg
 
   - name: msf
-    category: services
+    type: services
     source: https://cdn.worldvectorlogo.com/logos/microsoft-5.svg
 
   - name: apl
-    category: services
+    type: services
     source: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/apple-light.svg
 
-  - name: proxy
-    category: policies
+  - name: prx
+    type: policies
     source: https://uxwing.com/wp-content/themes/uxwing/download/location-travel-map/earth-icon.svg
 
-  - name: direct
-    category: policies
+  - name: drc
+    type: policies
     source: https://uxwing.com/wp-content/themes/uxwing/download/computers-mobile-hardware/connected-plug-icon.svg
 
-  - name: reject
-    category: policies
+  - name: rjc
+    type: policies
     source: https://uxwing.com/wp-content/themes/uxwing/download/computers-mobile-hardware/disconnect-plug-icon.svg
 
+  - name: yt
+    type: services
+    source: https://cdn.worldvectorlogo.com/logos/youtube-icon-8.svg
+
+  - name: tg
+    type: services
+    source: https://cdn.worldvectorlogo.com/logos/telegram-2019-logo.svg
+
   - name: hk
-    category: flags
+    type: flags
     source: https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/hk.svg
 
   - name: tw
-    category: flags
+    type: flags
     source: https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/tw.svg
 
   - name: jp
-    category: flags
+    type: flags
     source: https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/jp.svg
 
   - name: sg
-    category: flags
+    type: flags
     source: https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/sg.svg
 
   - name: us
-    category: flags
+    type: flags
     source: https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/us.svg

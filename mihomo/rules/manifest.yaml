@@ -1,21 +1,21 @@
 rules:
-  - name: realip-domain
+  - name: real-ip
     type: domain
+    ruleset:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/fakeip-filter.list
     exclude:
       - "*"
-    remote:
-      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/fakeip-filter.list
 
   - name: direct-domain
     type: domain
+    ruleset:
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.list
     exclude:
       - "*"
-    remote:
-      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/private.list
 
   - name: direct-ipcidr
     type: ipcidr
-    remote:
+    ruleset:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/privateip.list
 
   - name: direct-classical
@@ -26,94 +26,121 @@ rules:
 
   - name: yt-domain
     type: domain
-    remote:
+    ruleset:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/youtube.list
 
   - name: sp-domain
     type: domain
-    remote:
+    ruleset:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/spotify.list
+
+  - name: tg-domain
+    type: domain
+    include:
+      - t.me
+      - +.telegram.org
+      - +.telegram.me
+      - +.telegra.ph
+      - +.graph.org
+      - +.cdn-telegram.org
+      - +.telegram-cdn.org
+      - +.tdesktop.com
+      - +.tg.dev
 
   - name: tg-ipcidr
     type: ipcidr
-    remote:
+    ruleset:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/telegramip.list
 
-  - name: gh-classical
-    type: classical
-    remote:
-      - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GitHub/GitHub_No_Resolve.yaml
+  - name: gh-domain
+    type: domain
+    include:
+      - +.github.com
+      - +.github.io
+      - +.githubusercontent.com
+      - +.githubapp.com
+      - +.githubassets.com
+      - +.githubcopilot.com
+      - +.githubstatus.com
+      - +.ghcr.io
+      - +.npmjs.com
+      - +.npmjs.org
+
+  - name: nk-domain
+    type: domain
+    include:
+      - +.nike.com
+      - +.nikecdn.com
+      - +.nikecloud.com
+      - +.swoosh.com
 
   - name: gam-cn-domain
     type: domain
-    remote:
+    ruleset:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/games-cn.list
 
   - name: gam-domain
     type: domain
-    remote:
+    ruleset:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/games.list
-
-  - name: vdo-us-domain
-    type: domain
-    remote:
-      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/appletv.list
-      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/primevideo.list
 
   - name: vdo-domain
     type: domain
-    remote:
+    ruleset:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/netflix.list
       - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/disney.list
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/appletv.list
+      - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/primevideo.list
 
   - name: vdo-ipcidr
     type: ipcidr
-    remote:
+    ruleset:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/netflixip.list
-
-  - name: ais-jp-classical
-    type: classical
-    remote:
-      - https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini_No_Resolve.yaml
 
   - name: ais-us-domain
     type: domain
-    remote:
+    ruleset:
       - https://raw.githubusercontent.com/Accademia/Additional_Rule_For_Clash/main/AppleAI/AppleAI_Domain.yaml
 
   - name: ais-domain
     type: domain
-    remote:
+    ruleset:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ai.list
 
-  - name: cex-domain
+  - name: crp-domain
     type: domain
-    remote:
+    ruleset:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/domain/crypto.list
+    include:
+      - +.coinglass.com
+      - +.coingecko.com
+      - +.tradingview.com
+      - +.whale-alert.io
+      - +.arkm.com
+      - +.treeofalpha.com
 
-  - name: cex-classical
+  - name: crp-classical
     type: classical
     include:
-      - DOMAIN-SUFFIX,coinglass.com
-      - DOMAIN-SUFFIX,coingecko.com
-      - DOMAIN-SUFFIX,tradingview.com
-      - DOMAIN-SUFFIX,news.treeofalpha.com
-      - DOMAIN-SUFFIX,whale-alert.io
-      - DOMAIN-SUFFIX,intel.arkm.com
+      - PROCESS-NAME,Binance.exe
+      - PROCESS-NAME,OKX.exe
 
   - name: fin-domain
     type: domain
-    remote:
+    ruleset:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/domain/paypal.list
+    include:
+      - +.wise.com
+      - +.transferwise.com
 
   - name: ecm-domain
     type: domain
-    remote:
+    ruleset:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/domain/ecommerce.list
 
   - name: ecm-ipcidr
     type: ipcidr
-    remote:
+    ruleset:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/ipcidr/ecommerce.list
 
   - name: ggl-us-domain
@@ -123,59 +150,62 @@ rules:
 
   - name: ggl-cn-domain
     type: domain
-    remote:
+    ruleset:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/google-cn.list
 
   - name: ggl-domain
     type: domain
-    remote:
+    ruleset:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/domain/googlefcm.list
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/domain/google.list
 
   - name: ggl-ipcidr
     type: ipcidr
-    remote:
+    ruleset:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/ipcidr/googlefcm.list
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/ipcidr/google.list
 
   - name: msf-cn-domain
     type: domain
-    remote:
+    ruleset:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/microsoft-cn.list
 
   - name: msf-domain
     type: domain
-    remote:
+    ruleset:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/domain/microsoft.list
 
   - name: apl-ex-domain
     type: domain
-    remote:
+    ruleset:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/domain/apple-proxy.list
 
   - name: apl-cn-domain
     type: domain
-    remote:
+    ruleset:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/apple-cn.list
 
   - name: apl-domain
     type: domain
-    remote:
+    ruleset:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/domain/apns.list
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/domain/apple.list
 
   - name: apl-ipcidr
     type: ipcidr
-    remote:
+    ruleset:
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/ipcidr/apns.list
       - https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/meta/ipcidr/apple.list
 
-  - name: final-direct-domain
+  - name: china-domain
     type: domain
-    remote:
+    ruleset:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cn-lite.list
+    include:
+      - +.asiassn.com
+      - +.bygcloud.com
 
-  - name: final-direct-ipcidr
+  - name: china-ipcidr
     type: ipcidr
-    remote:
+    ruleset:
       - https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cnip.list

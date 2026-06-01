@@ -27,10 +27,10 @@ jobs:
           rm -rf common/icons/{services,policies,flags}
           mkdir -p common/icons/{services,policies,flags}/{svg,png}
 
-          yq -r '.icons[] | select(.source) | [.name, .category, .source] | @tsv' common/icons/manifest.yaml \
+          yq -r '.icons[] | select(.source) | [.name, .type, .source] | @tsv' common/icons/manifest.yaml \
             | xargs -n3 -P10 sh -c 'curl -fsSL "$3" -o "common/icons/$2/svg/$1.svg"' sh
 
-          yq -r '.icons[] | select(.source) | [.name, .category] | @tsv' common/icons/manifest.yaml \
+          yq -r '.icons[] | select(.source) | [.name, .type] | @tsv' common/icons/manifest.yaml \
             | xargs -n2 -P10 sh -c 'rsvg-convert -w 64 "common/icons/$2/svg/$1.svg" -o "common/icons/$2/png/$1.png"' sh
 
           git config user.name "github-actions[bot]"
