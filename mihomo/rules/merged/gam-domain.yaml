@@ -644,6 +644,7 @@ payload:
   - "+.steamcdn-a.akamaihd.net"
   - "+.steamcommunity-a.akamaihd.net"
   - "+.steamcommunity.com"
+  - "+.steamconnecttest.com"
   - "+.steamcontent.tnkjmec.com"
   - "+.steamdb.info"
   - "+.steamdeck.com"
