@@ -1,6 +1,6 @@
 # Rule Name: ggl-classical
-# Total Rules: 9289
-# Generated At: 2026-09-21 02:31:03 UTC+08:00
+# Total Rules: 9290
+# Generated At: 2026-09-22 04:17:18 UTC+08:00
 
 DOMAIN,alt1-mtalk.google.com
 DOMAIN,alt2-mtalk.google.com
@@ -229,6 +229,7 @@ DOMAIN-SUFFIX,feedburner.com
 DOMAIN-SUFFIX,fflick.com
 DOMAIN-SUFFIX,financeleadsonline.com
 DOMAIN-SUFFIX,firebase.com
+DOMAIN-SUFFIX,firebase.dev
 DOMAIN-SUFFIX,firebase.io
 DOMAIN-SUFFIX,firebaseapp.com
 DOMAIN-SUFFIX,firebaseio.com

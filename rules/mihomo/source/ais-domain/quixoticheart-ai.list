@@ -114,6 +114,7 @@ www.bing.com
 +.events.statsigapi.net
 +.featuregates.org
 +.flow.google
++.flow.google.com
 +.g.ai
 +.gateway.ai.cloudflare.com
 +.gateway.icloud.com
@@ -161,6 +162,7 @@ www.bing.com
 +.mistral.ai
 +.moonshot.ai
 +.mozilla.ai
++.notebook.google
 +.notebook.google.com
 +.notebooklm.google
 +.notebooklm.google.com
