@@ -1,6 +1,6 @@
 # Rule Name: direct-ipcidr
 # Total Rules: 18
-# Generated At: 2026-09-26 03:52:12 UTC+08:00
+# Generated At: 2026-09-27 03:04:04 UTC+08:00
 
 0.0.0.0/8
 10.0.0.0/8
