@@ -207,6 +207,7 @@ rules:
   - name: us-domain
     type: domain
     rules:
+      - +.bls.gov
       - +.nike.com
       - +.nikecdn.com
       - +.swoo.sh
