@@ -2,36 +2,128 @@ global:
   excludes:
     domain:
       - "*"
-      - 7h15_ru1353t_1s_m4d3_by_5ukk4w.skk.moe
-    classical:
-      - DOMAIN,7h15_ru1353t_1s_m4d3_by_5ukk4w.skk.moe
 
 rules:
   - name: direct-classical
     type: classical
     rulesets:
-      - name: sukka-direct
-        url: https://ruleset.skk.moe/List/non_ip/direct.conf
-
       - name: sukka-lan
         url: https://ruleset.skk.moe/List/non_ip/lan.conf
 
       - name: sukka-lan-ip
         url: https://ruleset.skk.moe/List/ip/lan.conf
 
-  - name: yt-classical
+      - name: sukka-direct
+        url: https://ruleset.skk.moe/List/non_ip/direct.conf
+
+  - name: united-states-domain
+    type: domain
+    rules:
+      - .bls.gov
+      - .federalreserve.gov
+      - voice.google.com
+
+  - name: korea-domain
+    type: domain
+    rules:
+      - .example.com
+
+  - name: japan-domain
+    type: domain
+    rules:
+      - .example.com
+
+  - name: china-domain
+    type: domain
+    rules:
+      - .example.com
+
+  - name: ai-classical
+    type: classical
+    rulesets:
+      - name: sukka-ai
+        url: https://ruleset.skk.moe/List/non_ip/ai.conf
+
+      - name: sukka-apple-intelligence
+        url: https://ruleset.skk.moe/List/non_ip/apple_intelligence.conf
+
+      - name: sukka-ai-ip
+        url: https://ruleset.skk.moe/List/ip/ai.conf
+
+  - name: games-cn-domain
+    type: domain
+    rulesets:
+      - name: sukka-game-download
+        url: https://ruleset.skk.moe/List/domainset/game-download.conf
+
+  - name: games-cn-classical
+    type: classical
+    rulesets:
+      - name: quixoticheart-games-cn
+        url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/games-cn.list
+
+  - name: games-domain
+    type: domain
+    rules:
+      - .crazygames.com
+      - .poki.com
+      - .itch.io
+
+  - name: games-classical
+    type: classical
+    rulesets:
+      - name: quixoticheart-games
+        url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/games.list
+
+  - name: music-cn-domain
+    type: domain
+    rules:
+      - .music.apple.com
+      - .applemusic.com
+
+  - name: music-domain
+    type: domain
+    rulesets:
+      - name: quixoticheart-spotify
+        url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/spotify.list
+
+  - name: youtube-classical
     type: classical
     rulesets:
       - name: quixoticheart-youtube
         url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/youtube.list
 
-  - name: sp-classical
+  - name: bilibili-classical
     type: classical
     rulesets:
-      - name: quixoticheart-spotify
-        url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/spotify.list
+      - name: quixoticheart-bilibili
+        url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/bilibili.list
 
-  - name: tg-classical
+  - name: videos-classical
+    type: classical
+    rulesets:
+      - name: quixoticheart-netflix
+        url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/netflix.list
+
+      - name: quixoticheart-disney
+        url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/disney.list
+
+      - name: quixoticheart-apple-tv
+        url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/apple-tv.list
+
+  - name: social-domain
+    type: domain
+    rules:
+      - +.x.com
+      - +.reddit.com 
+
+  - name: social-classical
+    type: classical
+    rulesets:
+      - name: quixoticheart-tiktok
+        url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/tiktok.list
+
+  - name: telegram-classical
     type: classical
     rulesets:
       - name: sukka-telegram
@@ -40,93 +132,67 @@ rules:
       - name: sukka-telegram-ip
         url: https://ruleset.skk.moe/List/ip/telegram.conf
 
-  - name: gam-cn-domain
+      - name: sukka-telegram-asn
+        url: https://ruleset.skk.moe/List/ip/telegram_asn.conf
+
+  - name: messaging-domain
     type: domain
-    rulesets:
-      - name: sukka-game-download
-        url: https://ruleset.skk.moe/List/domainset/game-download.conf
+    rules:
+      - .line.me
+      - .whatsapp.com
 
-  - name: gam-cn-classical
-    type: classical
-    rulesets:
-      - name: quixoticheart-games-cn
-        url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/games-cn.list
-
-  - name: gam-classical
-    type: classical
-    rulesets:
-      - name: quixoticheart-games
-        url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/games.list
-
-  - name: vdo-us-classical
-    type: classical
-    rulesets:
-      - name: quixoticheart-apple-tv
-        url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/apple-tv.list
-
-  - name: vdo-classical
-    type: classical
-    rulesets:
-      - name: quixoticheart-disney
-        url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/disney.list
-
-      - name: quixoticheart-netflix
-        url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/netflix.list
-
-  - name: ais-us-classical
-    type: classical
-    rulesets:
-      - name: sukka-apple-intelligence
-        url: https://ruleset.skk.moe/List/non_ip/apple_intelligence.conf
-
-  - name: ais-classical
-    type: classical
-    rulesets:
-      - name: quixoticheart-ai
-        url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/ai.list
-
-  - name: crp-classical
-    type: classical
-    rulesets:
-      - name: quixoticheart-crypto
-        url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/crypto.list
-    includes:
-      - DOMAIN-SUFFIX,arkm.com
-      - DOMAIN-SUFFIX,cg-capi.com
-      - DOMAIN-SUFFIX,cg-mapi.com
-      - DOMAIN-SUFFIX,coinglass.io
-      - DOMAIN-SUFFIX,treeofalpha.com
-      - DOMAIN-SUFFIX,whale-alert.io
-
-  - name: ecm-classical
+  - name: shopping-classical
     type: classical
     rulesets:
       - name: quixoticheart-ecommerce
         url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/ecommerce.list
 
-  - name: fnc-classical
+  - name: crypto-classical
+    type: classical
+    rulesets:
+      - name: quixoticheart-crypto
+        url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/crypto.list
+    excludes:
+      - DOMAIN-SUFFIX,coinglass.com
+      - DOMAIN-SUFFIX,cryptoquant.com
+
+  - name: stocks-domain
+    type: domain
+    rules:
+      - +.example.com
+
+  - name: markets-domain
+    type: domain
+    rules:
+      - .coinglass.com
+      - .coinglass.io
+      - .cg-capi.com
+      - .cg-mapi.com
+      - .cryptoquant.com
+      - .arkm.com
+      - .treeofalpha.com
+
+  - name: finance-domain
+    type: domain
+    rules:
+      - .wise.com      
+
+  - name: finance-classical
     type: classical
     rulesets:
       - name: quixoticheart-paypal
         url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/paypal.list
-    includes:
-      - DOMAIN-SUFFIX,wise.com
 
-  - name: ggl-us-domain
-    type: domain
-    rules:
-      - voice.google.com
-
-  - name: ggl-classical
+  - name: google-classical
     type: classical
     rulesets:
-      - name: quixoticheart-googlefcm
-        url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/googlefcm.list
-
       - name: quixoticheart-google
         url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/google.list
 
-  - name: msf-cn-classical
+      - name: quixoticheart-googlefcm
+        url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/googlefcm.list
+
+  - name: microsoft-cn-classical
     type: classical
     rulesets:
       - name: quixoticheart-microsoft-cn
@@ -135,31 +201,23 @@ rules:
       - name: sukka-microsoft-cdn
         url: https://ruleset.skk.moe/List/non_ip/microsoft_cdn.conf
 
-  - name: msf-classical
+  - name: microsoft-classical
     type: classical
     rulesets:
       - name: quixoticheart-microsoft
         url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/microsoft.list
 
-  - name: apl-cn-classical
+  - name: apple-cn-classical
     type: classical
     rulesets:
       - name: quixoticheart-apple-cn
         url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/apple-cn.list
 
-  - name: apl-classical
+  - name: apple-classical
     type: classical
     rulesets:
       - name: quixoticheart-apple
         url: https://raw.githubusercontent.com/QuixoticHeart/rule-set/refs/heads/ruleset/surge/apple.list
-
-  - name: us-classical
-    type: classical
-    rules:
-      - DOMAIN-SUFFIX,nike.com
-      - DOMAIN-SUFFIX,nikecdn.com
-      - DOMAIN-SUFFIX,swoo.sh
-      - DOMAIN-SUFFIX,swoosh.com
 
   - name: cn-classical
     type: classical
@@ -172,6 +230,3 @@ rules:
 
       - name: sukka-china-ip
         url: https://ruleset.skk.moe/List/ip/china_ip.conf
-
-      - name: sukka-china-ip-ipv6
-        url: https://ruleset.skk.moe/List/ip/china_ip_ipv6.conf
