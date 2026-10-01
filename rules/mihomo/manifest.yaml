@@ -277,7 +277,7 @@ rules:
       - name: accademia-global-dns-domain
         url: https://raw.githubusercontent.com/Accademia/Additional_Rule_For_Clash/refs/heads/main/GlobalDNS/GlobalDNS_Domain.yaml
 
-  - name: global-dns-ip
+  - name: global-dns-ipcidr
     type: ipcidr
     rulesets:
       - name: accademia-global-dns-ip
