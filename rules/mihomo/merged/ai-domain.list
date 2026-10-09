@@ -1,6 +1,6 @@
 # Rule Name: ai-domain
-# Total Rules: 193
-# Generated At: 2026-10-09 05:03:46 UTC+08:00
+# Total Rules: 195
+# Generated At: 2026-10-10 04:35:10 UTC+08:00
 
 +.agentclientprotocol.com
 +.ai.azure.com
@@ -178,6 +178,8 @@ api.together.xyz
 cloudaicompanion.googleapis.com
 cloudcode-pa.googleapis.com
 copilot-proxy.githubusercontent.com
+copilot-telemetry-service.githubusercontent.com
+copilot-telemetry.githubusercontent.com
 copilot-workspace.githubnext.com
 copilotprodattachments.blob.core.windows.net
 daily-cloudcode-pa.googleapis.com
