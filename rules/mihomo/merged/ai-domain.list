@@ -1,6 +1,6 @@
 # Rule Name: ai-domain
-# Total Rules: 195
-# Generated At: 2026-10-10 04:35:10 UTC+08:00
+# Total Rules: 196
+# Generated At: 2026-10-11 03:50:17 UTC+08:00
 
 +.agentclientprotocol.com
 +.ai.azure.com
@@ -157,6 +157,7 @@
 +.sora.com
 +.spicywriter.com
 +.stitch.withgoogle.com
++.syntx.ai
 +.talkai.info
 +.tapnow.ai
 +.themeforest.net
