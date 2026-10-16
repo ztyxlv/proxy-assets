@@ -1,6 +1,6 @@
 # Rule Name: social-classical
-# Total Rules: 122
-# Generated At: 2026-10-16 03:43:56 UTC+08:00
+# Total Rules: 125
+# Generated At: 2026-10-17 03:22:28 UTC+08:00
 
 DOMAIN,lf16-effectcdn.byteeffecttos-g.com
 DOMAIN,lf16-pkgcdn.pitaya-clientai.com
@@ -17,6 +17,9 @@ DOMAIN-SUFFIX,byteglb.com
 DOMAIN-SUFFIX,byteintlapi.com
 DOMAIN-SUFFIX,byteoversea.com
 DOMAIN-SUFFIX,capcut.com
+DOMAIN-SUFFIX,capcutapi.com
+DOMAIN-SUFFIX,capcutapi.us
+DOMAIN-SUFFIX,capcutstatic.com
 DOMAIN-SUFFIX,dm.bytedance.com
 DOMAIN-SUFFIX,gts.byteoversea.net
 DOMAIN-SUFFIX,ibytedtos.com
