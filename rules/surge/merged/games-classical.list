@@ -1,6 +1,6 @@
 # Rule Name: games-classical
-# Total Rules: 1017
-# Generated At: 2026-10-18 02:13:24 UTC+08:00
+# Total Rules: 1020
+# Generated At: 2026-10-19 02:29:02 UTC+08:00
 
 DOMAIN,a.ppy.sh
 DOMAIN,a4e8s8k3.map2.ssl.hwcdn.net
@@ -15,10 +15,13 @@ DOMAIN,blzdist-wow.necdn.leihuo.netease.com
 DOMAIN,c.ppy.sh
 DOMAIN,client.hikarifield.co.jp
 DOMAIN,d1unuk07s6td74.cloudfront.net
+DOMAIN,d348twzf7a8p5.cloudfront.net
 DOMAIN,datarouter.apps.netherrealm.com
+DOMAIN,devforum-uploads.s3.dualstack.us-east-2.amazonaws.com
 DOMAIN,dl.delivery.mp.microsoft.com
 DOMAIN,dlgarenanow-a.akamaihd.net
 DOMAIN,download.hikarifield.co.jp
+DOMAIN,doy2mn9upadnk.cloudfront.net
 DOMAIN,eaasserts-a.akamaihd.net
 DOMAIN,epicgames-download1-1251447533.file.myqcloud.com
 DOMAIN,epicgames-download1.akamaized.net
