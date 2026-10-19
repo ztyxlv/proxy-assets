@@ -1,6 +1,6 @@
 # Rule Name: games-domain
 # Total Rules: 901
-# Generated At: 2026-10-19 02:28:55 UTC+08:00
+# Generated At: 2026-10-20 04:53:47 UTC+08:00
 
 +.100classicbooks.com
 +.2k.com
@@ -27,7 +27,6 @@
 +.artstation.com
 +.artstationmedia.com
 +.artstorm.com
-+.asobostudio.com
 +.avatargarenanow-a.akamaihd.net
 +.awayoutgame.com
 +.ayudanintendo.com
@@ -215,7 +214,6 @@
 +.fireemblemawakening.com
 +.firesidegatherings.com
 +.fitgirl-repacks.site
-+.flightsimulator.com
 +.flipnotestudio.com
 +.forgecdn.net
 +.fortnite-vod.akamaized.net
@@ -848,12 +846,14 @@ blizzard.gcdn.cloudn.co.kr
 c.ppy.sh
 client.hikarifield.co.jp
 d1unuk07s6td74.cloudfront.net
+d348twzf7a8p5.cloudfront.net
 datarouter.apps.netherrealm.com
+devforum-uploads.s3.dualstack.us-east-2.amazonaws.com
 dlgarenanow-a.akamaihd.net
 download.hikarifield.co.jp
+doy2mn9upadnk.cloudfront.net
 eaasserts-a.akamaihd.net
 epicgames-download1.akamaized.net
-flightsimulator.azureedge.net
 gog-cdn-lumen.secure2.footprint.net
 gog-cdn.akamaized.net
 gog.salesmanago.com

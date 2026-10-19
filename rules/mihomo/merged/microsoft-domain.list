@@ -1,6 +1,6 @@
 # Rule Name: microsoft-domain
-# Total Rules: 763
-# Generated At: 2026-10-19 02:28:55 UTC+08:00
+# Total Rules: 761
+# Generated At: 2026-10-20 04:53:47 UTC+08:00
 
 +.1drv.com
 +.1drv.ms
@@ -29,7 +29,6 @@
 +.applicationinsights.net
 +.appserviceenvironment.cn
 +.aria.ms
-+.asobostudio.com
 +.asp.net
 +.aspnetcdn.com
 +.assets-yammer.com
@@ -227,7 +226,6 @@
 +.fabric.io
 +.fasttrackreadysupport.com
 +.femalefounderscomp.com
-+.flightsimulator.com
 +.flipwithsurface.com
 +.fluidpreview.com
 +.footprintdns.com
