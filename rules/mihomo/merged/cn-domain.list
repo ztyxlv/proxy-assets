@@ -1,6 +1,6 @@
 # Rule Name: cn-domain
-# Total Rules: 109891
-# Generated At: 2026-10-21 03:51:29 UTC+08:00
+# Total Rules: 109893
+# Generated At: 2026-10-22 03:56:31 UTC+08:00
 
 +.0.zone
 +.00.net
@@ -85183,6 +85183,8 @@
 +.szty56.com
 +.sztz.org
 +.sztzzs.com
++.szu.app
++.szu.moe
 +.szuavia.org
 +.szudad.com
 +.szunionlab.com

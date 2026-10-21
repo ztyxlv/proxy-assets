@@ -1,6 +1,6 @@
 # Rule Name: shopping-classical
-# Total Rules: 1531
-# Generated At: 2026-10-21 03:51:36 UTC+08:00
+# Total Rules: 1533
+# Generated At: 2026-10-22 03:56:38 UTC+08:00
 
 DOMAIN,api-p.videomarket.jp
 DOMAIN,ecapi-pchome.cdn.hinet.net
@@ -316,8 +316,10 @@ DOMAIN-SUFFIX,audible.com
 DOMAIN-SUFFIX,auto.ru
 DOMAIN-SUFFIX,automobile.fr
 DOMAIN-SUFFIX,autoru.me
+DOMAIN-SUFFIX,avito.com
 DOMAIN-SUFFIX,avito.ru
 DOMAIN-SUFFIX,avito.st
+DOMAIN-SUFFIX,avito.tech
 DOMAIN-SUFFIX,avodmp4s3ww-a.akamaihd.net
 DOMAIN-SUFFIX,avto.ru
 DOMAIN-SUFFIX,aws
