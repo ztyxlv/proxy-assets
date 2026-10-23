@@ -1,6 +1,6 @@
 # Rule Name: crypto-domain
-# Total Rules: 407
-# Generated At: 2026-10-23 03:46:47 UTC+08:00
+# Total Rules: 411
+# Generated At: 2026-10-24 03:48:57 UTC+08:00
 
 +.1inch.io
 +.1ml.com
@@ -86,6 +86,7 @@
 +.block.one
 +.blockchain.com
 +.blockchair.com
++.blockchair.net
 +.blockfrost.io
 +.bloks.io
 +.bmwweb.solutions
@@ -154,6 +155,7 @@
 +.cryptoart.io
 +.cryptocompare.com
 +.cryptofees.info
++.cryptoid.info
 +.cryptomus.com
 +.cryptorank.io
 +.cryptoslam.io
@@ -167,6 +169,7 @@
 +.defillama.com
 +.defipulse.com
 +.defirate.com
++.delets.cash
 +.delets.online
 +.deribit.com
 +.devcon.org
@@ -257,6 +260,7 @@
 +.kraken.onl
 +.kucoin.com
 +.kucoin.plus
++.kurs.expert
 +.lighter.exchange
 +.lighter.xyz
 +.lightning.community

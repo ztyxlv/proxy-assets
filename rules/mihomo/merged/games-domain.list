@@ -1,6 +1,6 @@
 # Rule Name: games-domain
-# Total Rules: 901
-# Generated At: 2026-10-23 03:46:47 UTC+08:00
+# Total Rules: 908
+# Generated At: 2026-10-24 03:48:57 UTC+08:00
 
 +.100classicbooks.com
 +.2k.com
@@ -229,6 +229,7 @@
 +.gaijinent.com
 +.game-repack.site
 +.game.maj-soul.com
++.gamebanana.com
 +.gamedownloads-rockstargames-com.akamaized.net
 +.gamepass.com
 +.gamesfirsthelsinki.com
@@ -547,6 +548,7 @@
 +.quiltmc.org
 +.quixel.com
 +.quixel.se
++.r2modman.com
 +.radgametools.com
 +.ravensoftware.com
 +.rayark.download
@@ -684,6 +686,7 @@
 +.steamgames.com
 +.steaminventoryhelper.com
 +.steammobile.akamaized.net
++.steamos.cloud
 +.steampipe-kr.akamaized.net
 +.steampipe-partner.akamaized.net
 +.steampipe.akamaized.net
@@ -730,6 +733,8 @@
 +.thesimssocial.com
 +.thetrackernetwork.com
 +.thewonderful101.com
++.thunderstore.io
++.thunderstore.org
 +.tiberiumalliances.com
 +.tiburon.com
 +.titanfall.com
@@ -790,12 +795,14 @@
 +.worldoftanks.eu
 +.worldofwarcraft.com
 +.worldofwarplanes.com
++.worldofwarships.asia
 +.worldofwarships.com
 +.worldseriesofwarzone.com
 +.wotblitz.com
 +.wow.nosdn.127.net
 +.wowchina.com
 +.wowsblitz.com
++.wplace.live
 +.wtmobile.com
 +.xbox
 +.xbox.co

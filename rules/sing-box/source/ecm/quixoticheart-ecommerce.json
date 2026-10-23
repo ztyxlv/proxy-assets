@@ -4,10 +4,12 @@
     {
       "domain": [
         "api-p.videomarket.jp",
-        "ecapi-pchome.cdn.hinet.net"
+        "ecapi-pchome.cdn.hinet.net",
+        "funko.my.site.com"
       ],
       "domain_suffix": [
         "21centuryaccess.com",
+        "24.place",
         "4ebaytraders.com",
         "a2z.com",
         "a2z.org.cn",
@@ -465,6 +467,7 @@
         "coupang.com",
         "coupangcdn.com",
         "cowboom.com",
+        "craftifyx.com",
         "craigslist.org",
         "createspace.com",
         "crececonebay.com",
@@ -727,6 +730,7 @@
         "fout.jp",
         "fragrancebay.com",
         "francemail.com",
+        "funko.com",
         "funpay.com",
         "funpay.ru",
         "futureshop.ca",
@@ -756,6 +760,8 @@
         "ggsel.net",
         "gittigidiyor.net",
         "gittigidiyorsikayet.com",
+        "glitchprod.com",
+        "glitchproductions.store",
         "gmarket.co.kr",
         "gmossp-sp.jp",
         "goldnikeclub.com",
@@ -938,6 +944,7 @@
         "llnwd.net",
         "loveminiso.com.br",
         "magnoliaav.com.cn",
+        "makeship.com",
         "marketexecutive.net",
         "media-imdb.com",
         "miadidas.com",
@@ -1182,6 +1189,7 @@
         "onlinegeeksquad.com",
         "onlyjobs.ru",
         "outletnike.com",
+        "ownaj.com",
         "ozon-credit.ru",
         "ozon-dostavka.ru",
         "ozon-tech.ru",
@@ -1344,7 +1352,6 @@
         "technogym.su",
         "telebay.com",
         "telesell.com",
-        "templatemonster.com",
         "terapeack.com",
         "terapeak.ca",
         "terapeak.cn",
@@ -1355,6 +1362,7 @@
         "teraperk.com",
         "terrapeak.com",
         "texttobuy.org",
+        "tgtime.store",
         "thebayuk.com",
         "thedailysnkr.com",
         "theebayshop.com",
@@ -1520,6 +1528,7 @@
         "yamaxun.cn",
         "yamaxun.com",
         "yibei.org",
+        "youtooz.com",
         "z.cn",
         "zappos"
       ],
