@@ -1,6 +1,6 @@
 # Rule Name: music-domain
 # Total Rules: 29
-# Generated At: 2026-10-27 04:54:46 UTC+08:00
+# Generated At: 2026-10-28 04:28:09 UTC+08:00
 
 +.audio-ak-spotify-com.akamaized.net
 +.byspotify.com
@@ -13,6 +13,7 @@
 +.spotify-everywhere.com
 +.spotify.app.link
 +.spotify.com
++.spotify.com.edgesuite.net
 +.spotify.design
 +.spotify.link
 +.spotifycdn.com
@@ -28,6 +29,5 @@
 audio4-ak-spotify-com.akamaized.net
 cdn-spotify-experiments.conductrics.com
 heads-ak-spotify-com.akamaized.net
-spotify.com.edgesuite.net
 spotify.map.fastly.net
 spotify.map.fastlylb.net

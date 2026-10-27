@@ -1,6 +1,6 @@
 # Rule Name: ai-domain
-# Total Rules: 210
-# Generated At: 2026-10-27 04:54:46 UTC+08:00
+# Total Rules: 213
+# Generated At: 2026-10-28 04:28:09 UTC+08:00
 
 +.agentclientprotocol.com
 +.ai.azure.com
@@ -190,6 +190,9 @@ alkalimakersuite-pa.clients6.google.com
 antigravity-pa.googleapis.com
 antigravity.googleapis.com
 api.together.xyz
+appsgenaiserver-pa.clients.google.com
+appsgenaiserver-pa.clients6.google.com
+appsgenaiserver-pa.googleapis.com
 cloudaicompanion.googleapis.com
 cloudcode-pa.googleapis.com
 copilot-proxy.githubusercontent.com
