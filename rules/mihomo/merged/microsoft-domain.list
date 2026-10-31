@@ -1,6 +1,6 @@
 # Rule Name: microsoft-domain
-# Total Rules: 761
-# Generated At: 2026-10-31 04:27:49 UTC+08:00
+# Total Rules: 763
+# Generated At: 2026-11-01 03:45:21 UTC+08:00
 
 +.1drv.com
 +.1drv.ms
@@ -162,6 +162,7 @@
 +.bingpk.com
 +.bings.com
 +.bingsandbox.com
++.bingstatic.com
 +.bingtoolbar.com
 +.bingtranslator.com
 +.bingvisualsearch.com
@@ -501,6 +502,7 @@
 +.msftidentity.com
 +.msftncsi.com
 +.msftnet.org
++.msftstatic.com
 +.msgamesresearch.com
 +.msgamestudios.com
 +.mshome.net

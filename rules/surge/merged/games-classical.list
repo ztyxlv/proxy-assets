@@ -1,6 +1,6 @@
 # Rule Name: games-classical
-# Total Rules: 1043
-# Generated At: 2026-10-31 04:27:55 UTC+08:00
+# Total Rules: 1044
+# Generated At: 2026-11-01 03:45:30 UTC+08:00
 
 DOMAIN,a.ppy.sh
 DOMAIN,a4e8s8k3.map2.ssl.hwcdn.net
@@ -104,6 +104,7 @@ DOMAIN-SUFFIX,activision.com
 DOMAIN-SUFFIX,activisionblizzard.com
 DOMAIN-SUFFIX,activisionblizzardmedia.com
 DOMAIN-SUFFIX,akspeedy.com
+DOMAIN-SUFFIX,amdgaming.com
 DOMAIN-SUFFIX,amiibo.com
 DOMAIN-SUFFIX,anthemgame.com
 DOMAIN-SUFFIX,anthemthegame.com
