@@ -1,6 +1,6 @@
 # Rule Name: games-domain
-# Total Rules: 917
-# Generated At: 2026-11-05 05:44:03 UTC+08:00
+# Total Rules: 922
+# Generated At: 2026-11-06 05:47:38 UTC+08:00
 
 +.100classicbooks.com
 +.2k.com
@@ -339,6 +339,9 @@
 +.learnwithleague.com
 +.legendofzelda.cn
 +.legendofzelda.com.cn
++.limbuscompany.global
++.limbuscompanyapi.com
++.limbuscompanycdn.org
 +.lol-europe.com
 +.lolclub.org
 +.lolespor.com
@@ -545,6 +548,7 @@
 +.priconne-redive.jp
 +.prismlauncher.org
 +.projectapex.com
++.projectmoon.studio
 +.protondb.com
 +.prts.plus
 +.pubg.com
@@ -643,6 +647,7 @@
 +.simcity.com
 +.skate2.com
 +.sketchfab.com
++.skinswap.com
 +.skylanders.com
 +.sledgehammergames.com
 +.snk-corp.co.jp

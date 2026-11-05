@@ -1,6 +1,6 @@
 # Rule Name: games-classical
-# Total Rules: 1045
-# Generated At: 2026-11-05 05:44:10 UTC+08:00
+# Total Rules: 1050
+# Generated At: 2026-11-06 05:47:45 UTC+08:00
 
 DOMAIN,a.ppy.sh
 DOMAIN,a4e8s8k3.map2.ssl.hwcdn.net
@@ -450,6 +450,9 @@ DOMAIN-SUFFIX,legendofzelda.com.cn
 DOMAIN-SUFFIX,leigod.cn
 DOMAIN-SUFFIX,leigod.com
 DOMAIN-SUFFIX,leigodjsq.com
+DOMAIN-SUFFIX,limbuscompany.global
+DOMAIN-SUFFIX,limbuscompanyapi.com
+DOMAIN-SUFFIX,limbuscompanycdn.org
 DOMAIN-SUFFIX,liuxing.com
 DOMAIN-SUFFIX,lol-europe.com
 DOMAIN-SUFFIX,lolclub.org
@@ -658,6 +661,7 @@ DOMAIN-SUFFIX,prd-priconne-redive.akamaized.net
 DOMAIN-SUFFIX,priconne-redive.jp
 DOMAIN-SUFFIX,prismlauncher.org
 DOMAIN-SUFFIX,projectapex.com
+DOMAIN-SUFFIX,projectmoon.studio
 DOMAIN-SUFFIX,protondb.com
 DOMAIN-SUFFIX,pubg.com
 DOMAIN-SUFFIX,pvp.net
@@ -756,6 +760,7 @@ DOMAIN-SUFFIX,simcity-buildit.com
 DOMAIN-SUFFIX,simcity.com
 DOMAIN-SUFFIX,skate2.com
 DOMAIN-SUFFIX,sketchfab.com
+DOMAIN-SUFFIX,skinswap.com
 DOMAIN-SUFFIX,skylanders.com
 DOMAIN-SUFFIX,sledgehammergames.com
 DOMAIN-SUFFIX,snk-corp.co.jp
