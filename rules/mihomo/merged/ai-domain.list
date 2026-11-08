@@ -1,6 +1,6 @@
 # Rule Name: ai-domain
-# Total Rules: 219
-# Generated At: 2026-11-08 03:56:07 UTC+08:00
+# Total Rules: 223
+# Generated At: 2026-11-09 04:14:11 UTC+08:00
 
 +.agentclientprotocol.com
 +.ai.azure.com
@@ -102,6 +102,7 @@
 +.grazie.aws.intellij.net
 +.grok.com
 +.grok.x.com
++.grokbot.com
 +.grokipedia.com
 +.groq.com
 +.h2o.ai
@@ -209,14 +210,17 @@ copilotprodattachments.blob.core.windows.net
 daily-cloudcode-pa.googleapis.com
 geminiweb-pa.clients.google.com
 geminiweb-pa.clients6.google.com
+http-intake.logs.us5.datadoghq.com
 notebooklm-pa.googleapis.com
 notebooklm.googleapis.com
+o1158394.ingest.us.sentry.io
 openaiassets.blob.core.windows.net
 openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net
 openaicom.imgix.net
 openaicomproductionae4b.blob.core.windows.net
 ppl-ai-file-upload.s3.amazonaws.com
 pplx-res.cloudinary.com
+production-copilot-host-westus.webpubsub.azure.com
 production-openaicom-storage.azureedge.net
 servd-anthropic-website.b-cdn.net
 sydney.bing.com
