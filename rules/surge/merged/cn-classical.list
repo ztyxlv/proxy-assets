@@ -1,15 +1,17 @@
 # Rule Name: cn-classical
-# Total Rules: 4765
-# Generated At: 2026-11-13 06:05:27 UTC+08:00
+# Total Rules: 4767
+# Generated At: 2026-11-14 05:48:53 UTC+08:00
 
 DOMAIN,7h15.ru1353t.1s.m4d3.by.5ukk4w.skk.moe
 DOMAIN,acg.tv
+DOMAIN,app.jianguoyun.com
 DOMAIN,app.viayoo.com
 DOMAIN,assets1.xboxlive.cn
 DOMAIN,assets2.xboxlive.cn
 DOMAIN,b23.tv
 DOMAIN,cdnstatic.tencentcs.com
 DOMAIN,cn.download.nvidia.com
+DOMAIN,comet.jianguoyun.com
 DOMAIN,config.ubnt.com
 DOMAIN,dl.ubnt.com
 DOMAIN,dns.pub
@@ -2887,7 +2889,6 @@ IP-CIDR,156.107.160.0/23
 IP-CIDR,156.107.170.0/24
 IP-CIDR,156.107.179.0/24
 IP-CIDR,156.107.181.0/24
-IP-CIDR,156.227.239.0/24
 IP-CIDR,156.232.10.0/23
 IP-CIDR,156.232.9.0/24
 IP-CIDR,157.0.0.0/16
@@ -3073,6 +3074,7 @@ IP-CIDR,182.18.96.0/19
 IP-CIDR,182.200.0.0/13
 IP-CIDR,182.240.0.0/13
 IP-CIDR,182.254.0.0/16
+IP-CIDR,182.255.60.0/22
 IP-CIDR,182.32.0.0/12
 IP-CIDR,182.48.112.0/21
 IP-CIDR,182.48.96.0/20
