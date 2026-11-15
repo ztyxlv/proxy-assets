@@ -1,9 +1,10 @@
 # Rule Name: ai-classical
-# Total Rules: 600
-# Generated At: 2026-11-15 04:28:08 UTC+08:00
+# Total Rules: 603
+# Generated At: 2026-11-16 04:51:25 UTC+08:00
 
 DOMAIN,7h15.ru1353t.1s.m4d3.by.5ukk4w.skk.moe
 DOMAIN,ai.google.dev
+DOMAIN,aicode.googleapis.com
 DOMAIN,aida.googleapis.com
 DOMAIN,aisandbox-pa.googleapis.com
 DOMAIN,alkalicore-pa.clients6.google.com
@@ -14,8 +15,10 @@ DOMAIN,api.jetbrains.ai
 DOMAIN,apple-relay.apple.com
 DOMAIN,apple-relay.cloudflare.com
 DOMAIN,apple-relay.fastly-edge.com
+DOMAIN,cloud.zed.dev
 DOMAIN,cp4.cloudflare.com
 DOMAIN,daily-cloudcode-pa.googleapis.com
+DOMAIN,daily-cloudcode-pa.sandbox.googleapis.com
 DOMAIN,gateway.ai.cloudflare.com
 DOMAIN,gspe1-ssl.ls.apple.com
 DOMAIN,inference.codeium.com

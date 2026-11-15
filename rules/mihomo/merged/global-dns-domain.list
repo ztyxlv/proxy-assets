@@ -1,6 +1,6 @@
 # Rule Name: global-dns-domain
 # Total Rules: 170
-# Generated At: 2026-11-15 04:27:57 UTC+08:00
+# Generated At: 2026-11-16 04:51:19 UTC+08:00
 
 +.+.dns.controld.com
 +.+.freedns.controld.com
