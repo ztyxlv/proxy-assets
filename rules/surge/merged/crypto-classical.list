@@ -1,6 +1,6 @@
 # Rule Name: crypto-classical
-# Total Rules: 418
-# Generated At: 2026-11-16 04:51:25 UTC+08:00
+# Total Rules: 419
+# Generated At: 2026-11-17 07:59:33 UTC+08:00
 
 DOMAIN,bybit-exchange.github.io
 DOMAIN,bybit.ada.support
@@ -178,6 +178,7 @@ DOMAIN-SUFFIX,dapp.review
 DOMAIN-SUFFIX,dappradar.com
 DOMAIN-SUFFIX,dcabtc.com
 DOMAIN-SUFFIX,debank.com
+DOMAIN-SUFFIX,debot.ai
 DOMAIN-SUFFIX,defieye.io
 DOMAIN-SUFFIX,defillama.com
 DOMAIN-SUFFIX,defipulse.com
