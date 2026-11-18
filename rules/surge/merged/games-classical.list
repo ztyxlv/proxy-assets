@@ -1,6 +1,6 @@
 # Rule Name: games-classical
-# Total Rules: 1050
-# Generated At: 2026-11-17 07:59:33 UTC+08:00
+# Total Rules: 1051
+# Generated At: 2026-11-19 06:51:38 UTC+08:00
 
 DOMAIN,a.ppy.sh
 DOMAIN,a4e8s8k3.map2.ssl.hwcdn.net
@@ -216,6 +216,7 @@ DOMAIN-SUFFIX,cubicodyssey.game
 DOMAIN-SUFFIX,curseforge.com
 DOMAIN-SUFFIX,cyberpunk.net
 DOMAIN-SUFFIX,cygames.co.jp
+DOMAIN-SUFFIX,cygames.com
 DOMAIN-SUFFIX,cygames.jp
 DOMAIN-SUFFIX,daoc.net
 DOMAIN-SUFFIX,darkageofcamelot.com
