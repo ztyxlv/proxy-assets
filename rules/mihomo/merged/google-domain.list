@@ -1,6 +1,6 @@
 # Rule Name: google-domain
-# Total Rules: 894
-# Generated At: 2026-11-23 05:34:49 UTC+08:00
+# Total Rules: 895
+# Generated At: 2026-11-25 08:24:02 UTC+08:00
 
 +.0emm.com
 +.1e100.net
@@ -226,6 +226,7 @@
 +.gateway.dev
 +.gbiz
 +.gcr.io
++.gemma.ai
 +.gerritcodereview.com
 +.get.app
 +.get.dev

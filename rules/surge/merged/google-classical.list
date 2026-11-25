@@ -1,6 +1,6 @@
 # Rule Name: google-classical
-# Total Rules: 8020
-# Generated At: 2026-11-23 05:34:56 UTC+08:00
+# Total Rules: 8021
+# Generated At: 2026-11-25 08:24:10 UTC+08:00
 
 DOMAIN,alt1-mtalk.google.com
 DOMAIN,alt2-mtalk.google.com
@@ -247,6 +247,7 @@ DOMAIN-SUFFIX,g.page
 DOMAIN-SUFFIX,gateway.dev
 DOMAIN-SUFFIX,gbiz
 DOMAIN-SUFFIX,gcr.io
+DOMAIN-SUFFIX,gemma.ai
 DOMAIN-SUFFIX,gerritcodereview.com
 DOMAIN-SUFFIX,get.app
 DOMAIN-SUFFIX,get.dev
